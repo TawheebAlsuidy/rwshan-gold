@@ -1,0 +1,160 @@
+{% load i18n static %}
+<style>
+/* بسيط وأنيق */
+.language-switcher {
+  position: relative;
+  display: inline-block;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+/* الزر الرئيسي */
+.lang-toggle {
+  display:flex;
+  gap:8px;
+  align-items:center;
+  padding:8px 12px;
+  border-radius:8px;
+  border:1px solid transparent;
+  background:transparent;
+  cursor:pointer;
+  color:#fff;
+  font-weight:600;
+}
+
+/* القائمة المنسدلة */
+.lang-menu {
+  display:none;
+  position:absolute;
+  top:calc(100% + 8px);
+  left:0;
+  min-width:200px;
+  border-radius:10px;
+  background:#fff;
+  border:1px solid #e6e6e6;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  overflow:hidden;
+  z-index:50;
+}
+
+.language-switcher.rtl .lang-menu { left:auto; right:0; }
+
+/* كل خيار */
+.lang-item {
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:10px 12px;
+  cursor:pointer;
+  text-align:left;
+  width:100%;
+  border:none;
+  background:transparent;
+  font-weight:500;
+}
+.lang-item:hover { background:#f6f7f9; }
+.lang-item.active { background:#eef2f6; font-weight:700; }
+
+/* العلم صغير داخل دائرة */
+.lang-item img { width:22px; height:22px; border-radius:50%; object-fit:cover; }
+
+/* أنيمشن */
+@keyframes fadeDown { from {opacity:0; transform:translateY(-6px)} to {opacity:1; transform:none} }
+.lang-menu.show { display:block; animation:fadeDown .15s ease; }
+</style>
+
+<div class="language-switcher {% if request.LANGUAGE_CODE == 'ar' %}rtl{% endif %}" id="langSwitcher">
+  <button type="button" class="lang-toggle" id="langToggle">
+    {% if request.LANGUAGE_CODE == 'ar' %}
+      <img src="https://flagcdn.com/w20/sa.png" alt="sa"> العربية
+    {% else %}
+      <img src="https://flagcdn.com/w20/us.png" alt="us"> English
+    {% endif %}
+    <span style="margin-left:auto; opacity:.6;">▾</span>
+  </button>
+
+  <div class="lang-menu" id="langMenu" role="menu" aria-hidden="true">
+    <!-- form for server-side set_language (keeps CSRF safe) -->
+    <form id="langForm" action="{% url 'set_language' %}" method="post" style="margin:0;">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ redirect_to|default:request.get_full_path|escapejs }}">
+      <button type="button" class="lang-item {% if request.LANGUAGE_CODE == 'ar' %}active{% endif %}" data-lang="ar">
+        <img src="https://flagcdn.com/w20/sa.png" alt="sa"> العربية
+      </button>
+      <button type="button" class="lang-item {% if request.LANGUAGE_CODE == 'en' %}active{% endif %}" data-lang="en">
+        <img src="https://flagcdn.com/w20/us.png" alt="us"> English
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  const toggle = document.getElementById('langToggle');
+  const menu = document.getElementById('langMenu');
+  const switcher = document.getElementById('langSwitcher');
+  const buttons = menu.querySelectorAll('.lang-item');
+  const nextPath = "{{ redirect_to|default:request.get_full_path|escapejs }}";
+  const setLangUrl = "{% url 'set_language' %}";
+
+  toggle.addEventListener('click', (e)=> {
+    e.stopPropagation();
+    menu.classList.toggle('show');
+    menu.setAttribute('aria-hidden', menu.classList.contains('show') ? 'false' : 'true');
+  });
+
+  document.addEventListener('click', (e)=> {
+    if (!switcher.contains(e.target)) {
+      menu.classList.remove('show');
+      menu.setAttribute('aria-hidden','true');
+    }
+  });
+
+  function getCookie(name) {
+    const v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return v ? v.pop() : '';
+  }
+
+  // تعديل هنا: العربية بدون بادئة، الإنجليزية مع /en/
+  function prefixPathForLang(lang) {
+  let path = window.location.pathname || '/';
+  let parts = path.split('/').filter(Boolean); // احذف العناصر الفارغة
+
+  if (lang === 'ar') {
+    // العربية → نزيل أي بادئة en
+    if (parts[0] === 'en') {
+      parts.shift();
+    }
+    return '/' + parts.join('/') + window.location.search + window.location.hash;
+  } else if (lang === 'en') {
+    // الإنجليزية → تأكد أن /en موجودة كبادئة
+    if (parts[0] !== 'en') {
+      parts.unshift('en');
+    }
+    return '/' + parts.join('/') + window.location.search + window.location.hash;
+  }
+}
+
+  buttons.forEach(btn => btn.addEventListener('click', async (e) => {
+    const lang = btn.dataset.lang;
+    try {
+      const csrf = getCookie('csrftoken') || '';
+      const formData = new URLSearchParams();
+      formData.append('language', lang);
+      formData.append('next', nextPath);
+      await fetch(setLangUrl, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+          'X-CSRFToken': csrf,
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        },
+        body: formData.toString()
+      });
+      window.location.href = prefixPathForLang(lang);
+    } catch (err) {
+      window.location.href = prefixPathForLang(lang);
+    }
+  }));
+})();
+</script>
+

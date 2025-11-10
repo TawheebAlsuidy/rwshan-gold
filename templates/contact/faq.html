@@ -1,0 +1,491 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "FAQs - Rwshan Gold Company" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .faq-hero {
+        background: linear-gradient(135deg, 
+            rgba(21, 21, 21, 0.97) 0%, 
+            rgb(255 202 75) 50%, 
+            rgba(21, 21, 21, 0.97) 100%), url('{% static "images/gold-pattern.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 100px 0 80px 0;
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    
+    .faq-hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .faq-hero .lead {
+        font-size: 1.3rem;
+        opacity: 0.95;
+        max-width: 600px;
+        margin: 0 auto;
+        font-weight: 300;
+    }
+    
+    .faq-search {
+        max-width: 600px;
+        margin: -40px auto 60px auto;
+        position: relative;
+        z-index: 10;
+    }
+    
+    .search-box {
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        border-radius: 50px;
+        overflow: hidden;
+    }
+    
+    .search-box input {
+        padding: 18px 60px 18px 25px;
+        border: none;
+        font-size: 1.1rem;
+        background: white;
+        width: 100%;
+    }
+    
+    .search-box input:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+    }
+    
+    .search-box button {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+        border: none;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    
+    .search-box button:hover {
+        transform: translateY(-50%) scale(1.05);
+        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+    }
+    
+    .accordion-custom {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        margin-bottom: 30px;
+    }
+    
+    .accordion-custom .accordion-item {
+        border: none;
+        border-bottom: 1px solid #f1f3f4;
+        background: white;
+    }
+    
+    .accordion-custom .accordion-item:last-child {
+        border-bottom: none;
+    }
+    
+    .accordion-custom .accordion-button {
+        background: white;
+        padding: 25px 30px;
+        font-weight: 600;
+        color: #2c3e50;
+        border: none;
+        box-shadow: none;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .accordion-custom .accordion-button:hover {
+        background: #f8f9fa;
+    }
+    
+    .accordion-custom .accordion-button:not(.collapsed) {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #d4af37;
+        border-left: 4px solid #d4af37;
+    }
+    
+    .accordion-custom .accordion-button::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23d4af37'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        transition: transform 0.3s ease;
+    }
+    
+    .accordion-custom .accordion-button:not(.collapsed)::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23d4af37'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        transform: rotate(-180deg);
+    }
+    
+    .accordion-custom .accordion-body {
+        padding: 30px;
+        background: #fafbfc;
+        color: #5a6c7d;
+        line-height: 1.8;
+        font-size: 1.05rem;
+        border-top: 1px solid #f1f3f4;
+    }
+    
+    .contact-cta {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+        border-radius: 20px;
+        margin-top: 80px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .contact-cta::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('{% static "images/gold-texture.jpg" %}');
+        opacity: 0.1;
+        background-size: cover;
+    }
+    
+    .contact-cta .container {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .contact-cta h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+    }
+    
+    .contact-cta .lead {
+        font-size: 1.3rem;
+        opacity: 0.9;
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .btn-gold {
+        background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+        border: none;
+        color: white;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
+    
+    .btn-gold:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        color: white;
+    }
+    
+    .no-results {
+        text-align: center;
+        padding: 80px 40px;
+        color: #6c757d;
+        background: #f8f9fa;
+        border-radius: 16px;
+        margin: 40px 0;
+    }
+    
+    .faq-icon {
+        color: #d4af37;
+        margin-right: 15px;
+        font-size: 1.2rem;
+    }
+    
+    .answer-icon {
+        color: #27ae60;
+        margin-right: 10px;
+        font-size: 1rem;
+    }
+    
+    .search-stats {
+        text-align: center;
+        color: #6c757d;
+        margin-bottom: 20px;
+        font-style: italic;
+    }
+    
+    .gold-text {
+        color: #d4af37;
+    }
+    
+    @media (max-width: 768px) {
+        .faq-hero {
+            padding: 80px 0 60px 0;
+            margin-top: 70px;
+        }
+        
+        .faq-hero h1 {
+            font-size: 2.5rem;
+        }
+        
+        .faq-search {
+            margin: -30px auto 40px auto;
+        }
+        
+        .accordion-custom .accordion-button {
+            padding: 20px;
+            font-size: 1rem;
+        }
+        
+        .accordion-custom .accordion-body {
+            padding: 20px;
+        }
+        
+        .contact-cta {
+            padding: 60px 0;
+            margin-top: 60px;
+        }
+        
+        .contact-cta h2 {
+            font-size: 2rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="faq-hero">
+    <div class="container py-8">
+        <h1>{% trans "Frequently Asked Questions" %}</h1>
+        <p class="lead">{% trans "Get immediate answers to common questions about our premium gold products and services" %}</p>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Search Box -->
+    <div class="faq-search">
+        <div class="search-box">
+            <input type="text" id="faqSearch" class="form-control" placeholder="{% trans 'Search for answers...' %}">
+            <button type="button" id="searchButton">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- FAQ Content -->
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <!-- Search Results Stats -->
+            <div id="searchStats" class="search-stats" style="display: none;">
+                <span id="resultsCount">0</span> {% trans "results found" %}
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="accordion accordion-custom" id="faqAccordion">
+                {% for faq in faqs %}
+                <div class="accordion-item faq-item" data-faq-text="{{ faq.question|lower }} {{ faq.answer|lower }}">
+                    <h2 class="accordion-header" id="heading{{ faq.id }}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                data-bs-target="#collapse{{ faq.id }}" aria-expanded="false" 
+                                aria-controls="collapse{{ faq.id }}">
+                            <i class="fas fa-question-circle faq-icon"></i>
+                            {{ faq.question }}
+                        </button>
+                    </h2>
+                    <div id="collapse{{ faq.id }}" class="accordion-collapse collapse" 
+                         aria-labelledby="heading{{ faq.id }}" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <i class="fas fa-info-circle answer-icon"></i>
+                            {{ faq.answer|linebreaks }}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="text-center py-5">
+                    <i class="fas fa-question-circle fa-4x text-muted mb-4"></i>
+                    <h3 class="gold-text">{% trans "No FAQs Available" %}</h3>
+                    <p class="text-muted lead">{% trans "We're currently preparing our frequently asked questions. Please check back soon or contact us directly." %}</p>
+                    <a href="{% url 'contact:contact' %}" class="btn btn-gold mt-3">
+                        <i class="fas fa-envelope me-2"></i>
+                        {% trans "Contact Support" %}
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- No Results Message -->
+            <div id="noResults" class="no-results" style="display: none;">
+                <i class="fas fa-search fa-4x text-muted mb-4"></i>
+                <h3 class="gold-text">{% trans "No matching FAQs found" %}</h3>
+                <p class="text-muted lead mb-4">{% trans "Try searching with different keywords or browse our categories below" %}</p>
+                <div class="row mt-4">
+                    <div class="col-md-4 mb-3">
+                        <div class="card border-0 text-center h-100">
+                            <div class="card-body">
+                                <i class="fas fa-gem fa-2x gold-text mb-3"></i>
+                                <h5>{% trans "Product Questions" %}</h5>
+                                <p class="text-muted small">{% trans "About our gold products and collections" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card border-0 text-center h-100">
+                            <div class="card-body">
+                                <i class="fas fa-shipping-fast fa-2x gold-text mb-3"></i>
+                                <h5>{% trans "Shipping & Delivery" %}</h5>
+                                <p class="text-muted small">{% trans "Delivery times and shipping methods" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card border-0 text-center h-100">
+                            <div class="card-body">
+                                <i class="fas fa-headset fa-2x gold-text mb-3"></i>
+                                <h5>{% trans "Support" %}</h5>
+                                <p class="text-muted small">{% trans "Customer service and technical support" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact CTA -->
+            <div class="contact-cta">
+                <div class="container">
+                    <h2>{% trans "Still have questions?" %}</h2>
+                    <p class="lead">{% trans "Our gold experts are ready to provide personalized assistance for all your inquiries" %}</p>
+                    <a href="{% url 'contact:contact' %}" class="btn btn-gold btn-lg">
+                        <i class="fas fa-envelope me-2"></i>
+                        {% trans "Get In Touch" %}
+                    </a>
+                    <div class="mt-4">
+                        <p class="mb-1">{% trans "Prefer to call?" %}</p>
+                        <h4 class="gold-text mb-0">0986 686 55 966+</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('faqSearch');
+    const searchButton = document.getElementById('searchButton');
+    const faqItems = document.querySelectorAll('.faq-item');
+    const noResults = document.getElementById('noResults');
+    const searchStats = document.getElementById('searchStats');
+    const resultsCount = document.getElementById('resultsCount');
+    const accordion = document.getElementById('faqAccordion');
+
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        faqItems.forEach(item => {
+            const faqText = item.getAttribute('data-faq-text');
+            
+            if (faqText.includes(searchTerm) || searchTerm === '') {
+                item.style.display = 'block';
+                visibleCount++;
+                
+                // Auto-expand if searching and term isn't empty
+                if (searchTerm !== '') {
+                    const collapseElement = item.querySelector('.accordion-collapse');
+                    if (collapseElement) {
+                        const bsCollapse = new bootstrap.Collapse(collapseElement, {
+                            toggle: false
+                        });
+                        bsCollapse.show();
+                    }
+                }
+            } else {
+                item.style.display = 'none';
+                // Collapse hidden items
+                const collapseElement = item.querySelector('.accordion-collapse');
+                if (collapseElement && collapseElement.classList.contains('show')) {
+                    const bsCollapse = new bootstrap.Collapse(collapseElement, {
+                        toggle: false
+                    });
+                    bsCollapse.hide();
+                }
+            }
+        });
+
+        // Update search stats
+        if (searchTerm !== '') {
+            searchStats.style.display = 'block';
+            resultsCount.textContent = visibleCount;
+        } else {
+            searchStats.style.display = 'none';
+        }
+
+        // Show/hide no results message
+        if (visibleCount === 0 && searchTerm !== '') {
+            noResults.style.display = 'block';
+            accordion.style.display = 'none';
+        } else {
+            noResults.style.display = 'none';
+            accordion.style.display = 'block';
+        }
+    }
+
+    // Search on button click
+    searchButton.addEventListener('click', performSearch);
+
+    // Search on Enter key
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            performSearch();
+        }
+    });
+
+    // Real-time search with debouncing
+    let searchTimeout;
+    searchInput.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(performSearch, 300);
+    });
+
+    // Add animation to accordion items
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Animate FAQ items on load
+    faqItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        item.style.transition = `opacity 0.5s ease, transform 0.5s ease ${index * 0.1}s`;
+        observer.observe(item);
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{{ case_study.title }} - {% trans "Case Study - Rwshan Gold Company" %}{% endblock %}
+
+{% block meta_description %}{{ case_study.excerpt|default:case_study.content|truncatewords:20 }}{% endblock %}
+
+{% block extra_css %}
+<style>
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 100px 0 80px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.comparison-section {
+    background: #f8f9fa;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.comparison-image {
+    height: 300px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.client-info-card {
+    background: white;
+    border-radius: 15px;
+    border: 1px solid #e9ecef;
+    padding: 2rem;
+}
+
+.related-case-study {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.related-case-study:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border-color: #007bff;
+}
+
+.back-btn {
+    background: linear-gradient(45deg, #6c757d, #495057);
+    border: none;
+    border-radius: 25px;
+    padding: 10px 25px;
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: linear-gradient(45deg, #495057, #343a40);
+    color: white;
+    transform: translateY(-2px);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <div class="col-lg-1 text-center text-lg-start">
+                {% if case_study.client.logo %}
+                <img src="{{ case_study.client.logo.url }}" alt="{{ case_study.client.name }}" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
+                {% else %}
+                <div class="rounded-circle bg-white d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                    <i class="fas fa-building text-primary fs-2"></i>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-lg-11 text-center text-lg-start">
+                <h1 class="display-5 fw-bold mb-3">{{ case_study.title }}</h1>
+                <p class="lead mb-0 opacity-90">{{ case_study.excerpt }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Before & After Comparison -->
+<section class="py-5">
+    <div class="container">
+        <div class="comparison-section p-4">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <h3 class="h4 fw-bold text-primary mb-3">{% trans "Before" %}</h3>
+                        {% if case_study.before_image %}
+                        <img src="{{ case_study.before_image.url }}" alt="{% trans 'Before' %} {{ case_study.title }}" class="comparison-image rounded">
+                        {% else %}
+                        <div class="comparison-image bg-light rounded d-flex align-items-center justify-content-center">
+                            <i class="fas fa-image text-muted display-3"></i>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <h3 class="h4 fw-bold text-success mb-3">{% trans "After" %}</h3>
+                        {% if case_study.after_image %}
+                        <img src="{{ case_study.after_image.url }}" alt="{% trans 'After' %} {{ case_study.title }}" class="comparison-image rounded">
+                        {% else %}
+                        <div class="comparison-image bg-light rounded d-flex align-items-center justify-content-center">
+                            <i class="fas fa-image text-muted display-3"></i>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Case Study Content -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="content-section">
+                    {{ case_study.content|linebreaks }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Client Information -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="client-info-card">
+                    <h3 class="h4 fw-bold text-primary mb-4">{% trans "About" %} {{ case_study.client.name }}</h3>
+                    <div class="d-flex align-items-start">
+                        {% if case_study.client.logo %}
+                        <img src="{{ case_study.client.logo.url }}" alt="{{ case_study.client.name }}" class="rounded-circle me-4" style="width: 60px; height: 60px; object-fit: cover;">
+                        {% endif %}
+                        <div class="flex-grow-1">
+                            <p class="text-muted mb-3">
+                                {% trans "A valued partner who trusted Rwshan Gold Company with their professional uniform needs, achieving outstanding results and enhanced brand image." %}
+                            </p>
+                            {% if case_study.client.website_url %}
+                            <a href="{{ case_study.client.website_url }}" target="_blank" class="btn btn-outline-primary">
+                                <i class="fas fa-external-link-alt me-2"></i> {% trans "Visit Client Website" %}
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Case Studies -->
+{% if related_case_studies %}
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="h1 fw-bold text-primary mb-3">{% trans "Related Case Studies" %}</h2>
+                <p class="lead text-muted">{% trans "Explore more success stories" %}</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            {% for related in related_case_studies %}
+            <div class="col-md-4">
+                <div class="related-case-study">
+                    {% if related.after_image %}
+                    <img src="{{ related.after_image.url }}" alt="{{ related.title }}" style="height: 150px; width: 100%; object-fit: cover;">
+                    {% else %}
+                    <div class="bg-primary d-flex align-items-center justify-content-center" style="height: 150px;">
+                        <i class="fas fa-chart-line text-white fs-1"></i>
+                    </div>
+                    {% endif %}
+                    <div class="p-3">
+                        <h4 class="h6 fw-bold mb-2">{{ related.title }}</h4>
+                        <a href="{{ related.get_absolute_url }}" class="btn btn-sm btn-outline-primary w-100">
+                            {% trans "Read Case Study" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Back to Case Studies -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="{% url 'testimonials:case_studies' %}" class="back-btn">
+                    <i class="fas fa-arrow-left me-2"></i> {% trans "Back to All Case Studies" %}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

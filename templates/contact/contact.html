@@ -1,0 +1,447 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Contact Us - Rwshan Gold Company" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .contact-hero {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 60px 0 40px 0;
+        margin-bottom: 40px;
+        border-bottom: 1px solid #e9ecef;
+    }
+    
+    .contact-card {
+        border-radius: 16px;
+        border: 1px solid #e9ecef;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        overflow: hidden;
+        background: white;
+        height: 100%;
+    }
+    
+    .contact-card:hover {
+        box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        transform: translateY(-4px);
+    }
+    
+    .card-header-custom {
+        background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+        color: white;
+        padding: 24px 30px;
+        border-bottom: none;
+    }
+    
+    .card-header-custom h3 {
+        margin: 0;
+        font-weight: 600;
+    }
+    
+    .form-control-custom {
+        border-radius: 8px;
+        border: 1px solid #e1e5e9;
+        padding: 12px 16px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: #fafafa;
+    }
+    
+    .form-control-custom:focus {
+        border-color: #d4af37;
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        background: white;
+    }
+    
+    .contact-info-item {
+        display: flex;
+        padding: 20px 0;
+        border-bottom: 1px solid #f1f3f4;
+        align-items: flex-start;
+    }
+    
+    .contact-info-item:last-child {
+        border-bottom: none;
+    }
+    
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        flex-shrink: 0;
+        color: #d4af37;
+        font-size: 1.2rem;
+    }
+    
+    .contact-details h5 {
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: #495057;
+    }
+    
+    .contact-details p {
+        margin-bottom: 0;
+        color: #6c757d;
+    }
+    
+    .contact-details a {
+        color: #6c757d;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .contact-details a:hover {
+        color: #d4af37;
+    }
+    
+    .btn-gold {
+        background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+    
+    .btn-gold:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        color: white;
+    }
+    
+    .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #f8f9fa;
+        color: #6c757d;
+        margin-right: 12px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    
+    .social-links a:hover {
+        background: #d4af37;
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    .faq-section {
+        margin-top: 80px;
+        padding-top: 60px;
+        border-top: 1px solid #e9ecef;
+    }
+    
+    .accordion-custom {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    
+    .accordion-custom .accordion-item {
+        border: none;
+        border-bottom: 1px solid #e9ecef;
+    }
+    
+    .accordion-custom .accordion-item:last-child {
+        border-bottom: none;
+    }
+    
+    .accordion-custom .accordion-button {
+        background: white;
+        padding: 20px 24px;
+        font-weight: 600;
+        color: #495057;
+        border: none;
+        box-shadow: none;
+    }
+    
+    .accordion-custom .accordion-button:not(.collapsed) {
+        background: #f8f9fa;
+        color: #d4af37;
+    }
+    
+    .accordion-custom .accordion-button::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23d4af37'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    }
+    
+    .accordion-custom .accordion-body {
+        padding: 20px 24px;
+        background: #f8f9fa;
+        color: #6c757d;
+    }
+    
+    .gold-text {
+        color: #d4af37;
+    }
+    
+    .text-lead {
+        font-size: 1.2rem;
+        color: #6c757d;
+        line-height: 1.6;
+    }
+    
+    @media (max-width: 768px) {
+        .contact-info-item {
+            flex-direction: column;
+        }
+        
+        .contact-icon {
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+        
+        .contact-hero {
+            padding: 40px 0 20px 0;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="contact-hero">
+    <div class="container py-8">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold mb-3 gold-text">{% trans "Contact Us" %}</h1>
+                <p class="text-lead mb-4">{% trans "We're here to assist you with all your gold product needs. Reach out to our expert team for personalized service and consultation." %}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-4">
+    <div class="row g-5">
+        <!-- Contact Form Column -->
+        <div class="col-lg-7">
+            <div class="contact-card">
+                <div class="card-header-custom">
+                    <h3><i class="fas fa-paper-plane me-2"></i>{% trans "Send Us a Message" %}</h3>
+                </div>
+                <div class="card-body p-4 p-md-5">
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label for="{{ form.name.id_for_label }}" class="form-label fw-semibold">{% trans "Full Name" %} *</label>
+                                {{ form.name }}
+                                {% if form.name.errors %}
+                                <div class="text-danger small mt-1">
+                                    {{ form.name.errors }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <label for="{{ form.email.id_for_label }}" class="form-label fw-semibold">{% trans "Email Address" %} *</label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                <div class="text-danger small mt-1">
+                                    {{ form.email.errors }}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label for="{{ form.phone.id_for_label }}" class="form-label fw-semibold">{% trans "Phone Number" %}</label>
+                                {{ form.phone }}
+                                {% if form.phone.errors %}
+                                <div class="text-danger small mt-1">
+                                    {{ form.phone.errors }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <label for="{{ form.subject.id_for_label }}" class="form-label fw-semibold">{% trans "Subject" %} *</label>
+                                {{ form.subject }}
+                                {% if form.subject.errors %}
+                                <div class="text-danger small mt-1">
+                                    {{ form.subject.errors }}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="{{ form.message.id_for_label }}" class="form-label fw-semibold">{% trans "Your Message" %} *</label>
+                            {{ form.message }}
+                            {% if form.message.errors %}
+                            <div class="text-danger small mt-1">
+                                {{ form.message.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <button type="submit" class="btn btn-gold mt-2">
+                            <i class="fas fa-paper-plane me-2"></i>{% trans "Send Message" %}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Information Column -->
+        <div class="col-lg-5">
+            <div class="contact-card">
+                <div class="card-header-custom">
+                    <h3><i class="fas fa-info-circle me-2"></i>{% trans "Contact Information" %}</h3>
+                </div>
+                <div class="card-body p-4 p-md-5">
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>{% trans "Our Address" %}</h5>
+                                <p>{% trans "Riyadh, Saudi Arabia" %}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>{% trans "Phone Number" %}</h5>
+                                <p><a href="tel:+966556860986">0986 686 55 966+</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>{% trans "Email Address" %}</h5>
+                                <p><a href="mailto:alroshangold@gmail.com">alroshangold@gmail.com</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>{% trans "Business Hours" %}</h5>
+                                <p class="mb-1">{% trans "Monday - Friday: 9am - 5pm" %}</p>
+                                <p class="mb-1">{% trans "Saturday: 10am - 2pm" %}</p>
+                                <p class="mb-0">{% trans "Sunday: Closed" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5 pt-3">
+                        <h4 class="mb-3 gold-text">{% trans "Follow Our Journey" %}</h4>
+                        <p class="text-muted mb-3">{% trans "Stay updated with our latest gold collections and exclusive offers" %}</p>
+                        <div class="social-links">
+                            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FAQ Section -->
+    {% if faqs %}
+    <div class="faq-section">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3 gold-text">{% trans "Frequently Asked Questions" %}</h2>
+                    <p class="text-lead">{% trans "Find quick answers to common questions about our gold products and services" %}</p>
+                </div>
+                
+                <div class="accordion accordion-custom" id="faqAccordion">
+                    {% for faq in faqs %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading{{ faq.id }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ faq.id }}" aria-expanded="false" aria-controls="collapse{{ faq.id }}">
+                                <i class="fas fa-question-circle me-3 gold-text"></i>{{ faq.question }}
+                            </button>
+                        </h2>
+                        <div id="collapse{{ faq.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ faq.id }}" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {{ faq.answer }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="text-center mt-5">
+                    <p class="text-muted">{% trans "Can't find what you're looking for?" %} <a href="#contact-form" class="gold-text fw-semibold text-decoration-none">{% trans "Contact us directly" %}</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add custom styling to form fields
+        const formFields = document.querySelectorAll('input, textarea, select');
+        formFields.forEach(field => {
+            field.classList.add('form-control-custom');
+        });
+        
+        // Add smooth scrolling for FAQ links
+        const contactLinks = document.querySelectorAll('a[href="#contact-form"]');
+        contactLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('.contact-card').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add animation to cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        const cards = document.querySelectorAll('.contact-card');
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    });
+</script>
+{% endblock %}

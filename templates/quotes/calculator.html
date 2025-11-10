@@ -1,0 +1,591 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Price Calculator - Rwshan Gold Company" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .calculator-hero {
+        background: linear-gradient(135deg, 
+            rgba(21, 21, 21, 0.97) 0%, 
+            rgb(255 202 75) 50%, 
+            rgba(21, 21, 21, 0.97) 100%), url('{% static "images/gold-calculator-bg.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 80px 0 60px 0;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .calculator-hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .calculator-hero .lead {
+        font-size: 1.3rem;
+        opacity: 0.95;
+        max-width: 600px;
+        margin: 0 auto;
+        font-weight: 300;
+    }
+    
+    .calculator-card {
+        border-radius: 20px;
+        border: 1px solid #e9ecef;
+        box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+        overflow: hidden;
+        background: white;
+        margin-bottom: 40px;
+    }
+    
+    .calculator-header {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        color: white;
+        padding: 30px 40px;
+        border-bottom: none;
+    }
+    
+    .calculator-header h2 {
+        margin: 0;
+        font-weight: 600;
+        font-size: 1.8rem;
+    }
+    
+    .calculator-body {
+        padding: 40px;
+    }
+    
+    .form-section {
+        margin-bottom: 35px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #f1f3f4;
+    }
+    
+    .form-section:last-of-type {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .section-title i {
+        color: #d4af37;
+        margin-right: 12px;
+        font-size: 1.2rem;
+    }
+    
+    .form-control-custom {
+        border-radius: 12px;
+        border: 2px solid #f1f3f4;
+        padding: 14px 18px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: #fafbfc;
+    }
+    
+    .form-control-custom:focus {
+        border-color: #d4af37;
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        background: white;
+    }
+    
+    .form-label-custom {
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+    
+    .price-result {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 16px;
+        padding: 30px;
+        margin: 30px 0;
+        border-left: 4px solid #d4af37;
+    }
+    
+    .price-display {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #d4af37;
+        text-align: center;
+        margin: 15px 0;
+    }
+    
+    .price-breakdown {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .breakdown-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #f1f3f4;
+    }
+    
+    .breakdown-row:last-child {
+        border-bottom: none;
+    }
+    
+    .breakdown-label {
+        color: #6c757d;
+    }
+    
+    .breakdown-value {
+        font-weight: 600;
+        color: #495057;
+    }
+    
+    .discount-badge {
+        background: #27ae60;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-left: 10px;
+    }
+    
+    .btn-gold {
+        background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+        border: none;
+        color: white;
+        padding: 16px 40px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        width: 100%;
+    }
+    
+    .btn-gold:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        color: white;
+    }
+    
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    
+    .feature-highlights {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 40px;
+    }
+    
+    .feature-card {
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 25px 20px;
+        text-align: center;
+        border: 1px solid #e9ecef;
+        transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        border-color: #d4af37;
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px auto;
+        color: white;
+        font-size: 1.5rem;
+    }
+    
+    .feature-card h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #2c3e50;
+    }
+    
+    .feature-card p {
+        color: #6c757d;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+    
+    .required-field::after {
+        content: " *";
+        color: #e74c3c;
+    }
+    
+    @media (max-width: 768px) {
+        .calculator-hero {
+            padding: 60px 0 40px 0;
+        }
+        
+        .calculator-hero h1 {
+            font-size: 2.2rem;
+        }
+        
+        .calculator-body {
+            padding: 25px;
+        }
+        
+        .form-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .price-display {
+            font-size: 2rem;
+        }
+        
+        .feature-highlights {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="calculator-hero">
+    <div class="container py-8">
+        <h1>{% trans "Price Calculator" %}</h1>
+        <p class="lead">{% trans "Get an instant, accurate estimate for your premium uniform order with our advanced calculator" %}</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="calculator-card">
+                <div class="calculator-header">
+                    <h2><i class="fas fa-calculator me-2"></i>{% trans "Custom Quote Calculator" %}</h2>
+                </div>
+                
+                <div class="calculator-body">
+                    <form id="price-calculator-form" method="post" action="{% url 'quotes:request_create' %}">
+                        {% csrf_token %}
+
+                        <!-- Product Selection Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-gem"></i>{% trans "Product Selection" %}
+                            </h3>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label for="id_product" class="form-label-custom required-field">{% trans "Select Product" %}</label>
+                                    <select id="id_product" name="product" class="form-select form-control-custom">
+                                        <option value="">{% trans "Choose a product" %}</option>
+                                        {% for product in products %}
+                                        <option value="{{ product.id }}" data-price="{{ product.base_price }}">{{ product.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <div class="form-text">{% trans "Choose from our premium uniform collection" %}</div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <label for="id_fabric" class="form-label-custom required-field">{% trans "Select Fabric" %}</label>
+                                    <select id="id_fabric" name="fabric" class="form-select form-control-custom">
+                                        <option value="">{% trans "Choose a fabric" %}</option>
+                                        {% for fabric in fabric_options %}
+                                        <option value="{{ fabric.id }}" data-modifier="{{ fabric.price_modifier }}">{{ fabric.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <div class="form-text">{% trans "Premium fabric options available" %}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label for="id_color" class="form-label-custom required-field">{% trans "Select Color" %}</label>
+                                    <select id="id_color" name="color" class="form-select form-control-custom">
+                                        <option value="">{% trans "Choose a color" %}</option>
+                                        {% for color in color_options %}
+                                        <option value="{{ color.id }}">{{ color.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <div class="form-text">{% trans "Custom color matching available" %}</div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <label for="id_quantity" class="form-label-custom required-field">{% trans "Quantity" %}</label>
+                                    <input type="number" id="id_quantity" name="quantity" min="1" value="1" class="form-control form-control-custom">
+                                    <div class="form-text">{% trans "Bulk discounts available for larger orders" %}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Customization Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-palette"></i>{% trans "Customization" %}
+                            </h3>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label for="id_logo_complexity" class="form-label-custom">{% trans "Logo Complexity" %}</label>
+                                    <select id="id_logo_complexity" name="logo_complexity" class="form-select form-control-custom">
+                                        <option value="simple">{% trans "Simple - Basic logo placement" %}</option>
+                                        <option value="medium">{% trans "Medium - Detailed embroidery" %}</option>
+                                        <option value="complex">{% trans "Complex - Intricate design work" %}</option>
+                                    </select>
+                                    <div class="form-text">{% trans "Choose the complexity level for logo application" %}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Price Calculation Result -->
+                        <div class="price-result">
+                            <h4 class="text-center mb-3">{% trans "Estimated Price" %}</h4>
+                            <div class="price-display">
+                                <span id="total-price">0.00</span> {% trans "SAR" %}
+                            </div>
+                            <div class="price-breakdown" id="price-breakdown">
+                                <div class="text-center text-muted">
+                                    {% trans "Select product options to see detailed pricing" %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-user-circle"></i>{% trans "Contact Information" %}
+                            </h3>
+                            <div class="form-grid">
+                                <div class="mb-4">
+                                    <label for="id_company_name" class="form-label-custom required-field">{% trans "Company Name" %}</label>
+                                    <input type="text" id="id_company_name" name="company_name" class="form-control form-control-custom" required>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="id_contact_person" class="form-label-custom required-field">{% trans "Contact Person" %}</label>
+                                    <input type="text" id="id_contact_person" name="contact_person" class="form-control form-control-custom" required>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="id_email" class="form-label-custom required-field">{% trans "Email Address" %}</label>
+                                    <input type="email" id="id_email" name="email" class="form-control form-control-custom" required>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="id_phone" class="form-label-custom required-field">{% trans "Phone Number" %}</label>
+                                    <input type="text" id="id_phone" name="phone" class="form-control form-control-custom" required>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="id_notes" class="form-label-custom">{% trans "Additional Notes & Requirements" %}</label>
+                                <textarea id="id_notes" name="notes" class="form-control form-control-custom" rows="4" placeholder="{% trans 'Any special requirements or notes for your order...' %}"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-gold mt-4">
+                            <i class="fas fa-paper-plane me-2"></i>
+                            {% trans "Request Official Quote" %}
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Feature Highlights -->
+            <div class="feature-highlights">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4>{% trans "Instant Calculation" %}</h4>
+                    <p>{% trans "Real-time price updates as you customize your order" %}</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h4>{% trans "Bulk Discounts" %}</h4>
+                    <p>{% trans "Automatic discounts for larger quantity orders" %}</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>{% trans "Quality Guarantee" %}</h4>
+                    <p>{% trans "Premium materials and craftsmanship guaranteed" %}</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h4>{% trans "Fast Delivery" %}</h4>
+                    <p>{% trans "Quick turnaround times for all custom orders" %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const productSelect = document.getElementById('id_product');
+    const fabricSelect = document.getElementById('id_fabric');
+    const colorSelect = document.getElementById('id_color');
+    const quantityInput = document.getElementById('id_quantity');
+    const logoComplexitySelect = document.getElementById('id_logo_complexity');
+    const totalPriceElement = document.getElementById('total-price');
+    const priceBreakdownElement = document.getElementById('price-breakdown');
+
+    function calculatePrice() {
+        const productOption = productSelect.options[productSelect.selectedIndex];
+        const fabricOption = fabricSelect.options[fabricSelect.selectedIndex];
+        const quantity = parseInt(quantityInput.value) || 0;
+        const logoComplexity = logoComplexitySelect.value;
+
+        if (!productOption.value || !fabricOption.value || quantity < 1) {
+            totalPriceElement.textContent = '0.00';
+            priceBreakdownElement.innerHTML = '<div class="text-center text-muted">{% trans "Select product options to see detailed pricing" %}</div>';
+            return;
+        }
+
+        const basePrice = parseFloat(productOption.dataset.price) || 0;
+        const fabricModifier = parseFloat(fabricOption.dataset.modifier) || 0;
+
+        const logoFees = { simple: 10, medium: 25, complex: 50 };
+        const logoFee = logoFees[logoComplexity] || 0;
+
+        let quantityDiscount = 0;
+        if (quantity >= 100) quantityDiscount = 0.15;
+        else if (quantity >= 50) quantityDiscount = 0.10;
+        else if (quantity >= 20) quantityDiscount = 0.05;
+
+        const unitPrice = basePrice + fabricModifier + logoFee;
+        const totalBeforeDiscount = unitPrice * quantity;
+        const discountAmount = totalBeforeDiscount * quantityDiscount;
+        const totalPrice = totalBeforeDiscount - discountAmount;
+
+        totalPriceElement.textContent = totalPrice.toFixed(2);
+
+        let breakdownHTML = `
+            <div class="breakdown-row">
+                <span class="breakdown-label">{% trans "Base Price" %}</span>
+                <span class="breakdown-value">${basePrice.toFixed(2)} {% trans "SAR" %}</span>
+            </div>
+            <div class="breakdown-row">
+                <span class="breakdown-label">{% trans "Fabric Upgrade" %}</span>
+                <span class="breakdown-value">${fabricModifier >= 0 ? '+' : ''}${fabricModifier.toFixed(2)} {% trans "SAR" %}</span>
+            </div>
+            <div class="breakdown-row">
+                <span class="breakdown-label">{% trans "Logo Application" %}</span>
+                <span class="breakdown-value">${logoFee.toFixed(2)} {% trans "SAR" %}</span>
+            </div>
+            <div class="breakdown-row">
+                <span class="breakdown-label">{% trans "Unit Price" %}</span>
+                <span class="breakdown-value">${unitPrice.toFixed(2)} {% trans "SAR" %}</span>
+            </div>
+            <div class="breakdown-row">
+                <span class="breakdown-label">{% trans "Quantity" %}</span>
+                <span class="breakdown-value">${quantity}  {% trans "units" %}</span>
+            </div>
+            <div class="breakdown-row">
+                <span class="breakdown-label">{% trans "Subtotal" %}</span>
+                <span class="breakdown-value">${totalBeforeDiscount.toFixed(2)} {% trans "SAR" %}</span>
+            </div>
+        `;
+
+        if (quantityDiscount > 0) {
+            breakdownHTML += `
+                <div class="breakdown-row text-success">
+                    <span class="breakdown-label">
+                        {% trans "Quantity Discount" %}
+                        <span class="discount-badge">-${(quantityDiscount * 100).toFixed(0)}%</span>
+                    </span>
+                    <span class="breakdown-value">-${discountAmount.toFixed(2)} {% trans "SAR" %}</span>
+                </div>
+            `;
+        }
+
+        breakdownHTML += `
+            <div class="breakdown-row" style="border-top: 2px solid #d4af37; padding-top: 12px; margin-top: 8px;">
+                <span class="breakdown-label" style="font-weight: 700; color: #2c3e50;">{% trans "Total Price" %}</span>
+                <span class="breakdown-value" style="font-weight: 700; color: #d4af37; font-size: 1.1rem;">${totalPrice.toFixed(2)} {% trans "SAR" %}</span>
+            </div>
+        `;
+
+        priceBreakdownElement.innerHTML = breakdownHTML;
+    }
+
+    function fillFormFromURL() {
+        const params = new URLSearchParams(window.location.search);
+
+        const productId = params.get('product');
+        const fabricId = params.get('fabric');
+        const colorId = params.get('color');
+        const quantity = params.get('quantity');
+        const logoComplexity = params.get('logo_complexity');
+
+        if (productId) productSelect.value = productId;
+        if (fabricId) fabricSelect.value = fabricId;
+        if (colorId) colorSelect.value = colorId;
+        if (quantity) quantityInput.value = quantity;
+        if (logoComplexity) logoComplexitySelect.value = logoComplexity;
+
+        calculatePrice();
+    }
+
+    // Add custom styling to form elements
+    const formElements = document.querySelectorAll('input, select, textarea');
+    formElements.forEach(element => {
+        if (!element.classList.contains('form-control-custom')) {
+            element.classList.add('form-control-custom');
+        }
+    });
+
+    // Initialize calculation
+    setTimeout(() => {
+        fillFormFromURL();
+    }, 100);
+
+    // Event listeners for real-time calculation
+    productSelect.addEventListener('change', calculatePrice);
+    fabricSelect.addEventListener('change', calculatePrice);
+    colorSelect.addEventListener('change', calculatePrice);
+    quantityInput.addEventListener('input', calculatePrice);
+    logoComplexitySelect.addEventListener('change', calculatePrice);
+
+    // Add input validation
+    quantityInput.addEventListener('blur', function() {
+        if (this.value < 1) {
+            this.value = 1;
+            calculatePrice();
+        }
+    });
+});
+</script>
+{% endblock %}

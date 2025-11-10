@@ -1,0 +1,98 @@
+<!-- quotes/templates/quotes/emails/quote_confirmation.html -->
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تأكيد طلب عرض السعر</title>
+    <style>
+        body {
+            font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #D4AF37 0%, #b8941f 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .content {
+            padding: 30px;
+        }
+        .thank-you {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .next-steps {
+            background: #e8f5e8;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .contact-info {
+            background: #f0f7ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>شكراً لك على طلب عرض السعر</h1>
+            <p>رقم طلبك: {{ quote.quote_id }}</p>
+        </div>
+        
+        <div class="content">
+            <div class="thank-you">
+                <h2>عزيزي/عزيزتي {{ quote.contact_person }},</h2>
+                <p>نشكرك على اهتمامك بمنتجات {{ company_name }}. لقد استلمنا طلبك بنجاح وسنقوم بمراجعته من قبل فريقنا المختص.</p>
+            </div>
+
+            <div class="next-steps">
+                <h3>الخطوات القادمة:</h3>
+                <ul>
+                    <li>مراجعة طلبك من قبل فريق المبيعات</li>
+                    <li>الاتصال بك خلال 24 ساعة عمل لتأكيد التفاصيل</li>
+                    <li>إرسال عرض السعر النهائي</li>
+                </ul>
+            </div>
+
+            <div class="contact-info">
+                <h3>للاستفسارات:</h3>
+                <p>البريد الإلكتروني: {{ contact_email }}</p>
+                <p>هاتف: +966XXXXXXXXX</p>
+                <p>ساعات العمل: الأحد - الخميس، 8:00 ص - 5:00 م</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <p><strong>نقدر ثقتك بنا ونتطلع لخدمتك!</strong></p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 {{ company_name }}. جميع الحقوق محفوظة.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "My Quotes - Rwshan Gold Company" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .quote-card {
+        border-radius: 12px;
+        border: 1px solid #e9ecef;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        margin-bottom: 16px;
+        background: white;
+        overflow: hidden;
+    }
+    
+    .quote-card:hover {
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        transform: translateY(-2px);
+        border-color: #d4af37;
+    }
+    
+    .quote-card-header {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 16px 20px;
+        border-bottom: 1px solid #e9ecef;
+    }
+    
+    .quote-card-body {
+        padding: 20px;
+    }
+    
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+    
+    .status-pending {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+    
+    .status-processing {
+        background-color: #cce7ff;
+        color: #004085;
+    }
+    
+    .status-completed {
+        background-color: #d1f2eb;
+        color: #0c5460;
+    }
+    
+    .status-rejected {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+    
+    .price-tag {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #d4af37;
+    }
+    
+    .product-image {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6c757d;
+    }
+    
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+    }
+    
+    .empty-state-icon {
+        font-size: 4rem;
+        color: #dee2e6;
+        margin-bottom: 20px;
+    }
+    .pagination {
+        direction: ltr;
+    }
+    
+    .pagination-container {
+        margin-top: 40px;
+    }
+    
+    .page-item.active .page-link {
+        background-color: #d4af37;
+        border-color: #d4af37;
+    }
+    
+    .page-link {
+        color: #495057;
+    }
+    
+    .page-link:hover {
+        color: #d4af37;
+    }
+    
+    .gold-text {
+        color: #d4af37;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-8">
+    <!-- <div class="row mb-5">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold mb-3 gold-text">{% trans "My Quote Requests" %}</h1>
+            <p class="lead text-muted">{% trans "Track and manage all your gold product quote requests" %}</p>
+        </div>
+    </div> -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold mb-3 gold-text">{% trans "My Quote Requests" %}</h1>
+            <p class="lead text-muted">{% trans "Track and manage all your gold product quote requests" %}</p>
+            
+            {% if not request.user.is_authenticated %}
+            <div class="alert alert-info mt-3">
+                <i class="fas fa-info-circle me-2"></i>
+                {% trans "Your quotes are saved in this browser session. For permanent access, please consider creating an account." %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    {% if quotes %}
+        <div class="row">
+            <div class="col-12">
+                {% for quote in quotes %}
+                <div class="quote-card">
+                    <div class="quote-card-header d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-0 fw-bold">{{ quote.product.name }}</h5>
+                            <small class="text-muted">{{ quote.company_name }}</small>
+                        </div>
+                        <div class="text-end">
+                            <div class="text-muted small">{{ quote.created_at|date:"d M Y" }}</div>
+                            <div class="text-muted small">{{ quote.created_at|date:"h:i A" }}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="quote-card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-2 text-center mb-3 mb-md-0">
+                                <div class="product-image mx-auto">
+                                    {% if quote.product.image %}
+                                        <img src="{{ quote.product.image.url }}" alt="{{ quote.product.name }}" class="img-fluid rounded" style="max-height: 80px; object-fit: contain;">
+                                    {% else %}
+                                        <i class="fas fa-gem fa-2x"></i>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <div class="mb-2">
+                                    <span class="fw-semibold">{% trans "Status" %}:</span>
+                                    {% if quote.status == 'pending' %}
+                                        <span class="status-badge status-pending ms-2">{{ quote.get_status_display }}</span>
+                                    {% elif quote.status == 'processing' %}
+                                        <span class="status-badge status-processing ms-2">{{ quote.get_status_display }}</span>
+                                    {% elif quote.status == 'completed' %}
+                                        <span class="status-badge status-completed ms-2">{{ quote.get_status_display }}</span>
+                                    {% elif quote.status == 'rejected' %}
+                                        <span class="status-badge status-rejected ms-2">{{ quote.get_status_display }}</span>
+                                    {% else %}
+                                        <span class="status-badge ms-2">{{ quote.get_status_display }}</span>
+                                    {% endif %}
+                                </div>
+                                
+                                {% if quote.notes %}
+                                <div class="mt-2">
+                                    <span class="fw-semibold">{% trans "Notes" %}:</span>
+                                    <p class="mb-0 text-muted small">{{ quote.notes|truncatewords:15 }}</p>
+                                </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-2 text-center mb-3 mb-md-0">
+                                {% if quote.estimated_price %}
+                                <div class="price-tag">{{ quote.estimated_price }} SAR</div>
+                                <small class="text-muted">{% trans "Estimated Price" %}</small>
+                                {% else %}
+                                <div class="text-muted">{% trans "Pending Estimate" %}</div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-2 text-center">
+                                <a href="{% url 'quotes:detail' quote.id %}" class="btn btn-outline-primary btn-sm">
+                                    {% trans "View Details" %} <i class="fas fa-arrow-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        {% if is_paginated %}
+        <div class="pagination-container">
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                                <i class="fas fa-chevron-left me-1"></i> {% trans "Previous" %}
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">
+                                <i class="fas fa-chevron-left me-1"></i> {% trans "Previous" %}
+                            </a>
+                        </li>
+                    {% endif %}
+                    
+                    {% for num in paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <li class="page-item active">
+                                <a class="page-link" href="#">{{ num }}</a>
+                            </li>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                                {% trans "Next" %} <i class="fas fa-chevron-right ms-1"></i>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">
+                                {% trans "Next" %} <i class="fas fa-chevron-right ms-1"></i>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+    {% else %}
+        <div class="empty-state">
+            <div class="empty-state-icon">
+                <i class="fas fa-file-invoice"></i>
+            </div>
+            <h3 class="mb-3">{% trans "No Quote Requests Yet" %}</h3>
+            <p class="text-muted mb-4">{% trans "You haven't submitted any quote requests. Start by browsing our gold products." %}</p>
+            <a href="{% url 'products:list' %}" class="btn btn-primary">
+                <i class="fas fa-gem me-2"></i> {% trans "Browse Products" %}
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Add any interactive functionality if needed
+    document.addEventListener('DOMContentLoaded', function() {
+        // You can add JavaScript interactions here if needed
+        // For example, adding animation to cards on load
+        const quoteCards = document.querySelectorAll('.quote-card');
+        quoteCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+            card.classList.add('animate__animated', 'animate__fadeInUp');
+        });
+    });
+</script>
+{% endblock %}

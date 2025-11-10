@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: rwshan_gold_db
+      POSTGRES_USER: rwshan_gold_user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    command: gunicorn rwshan_gold.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/mediafiles
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DEBUG=False
+      - DATABASE_URL=postgres://rwshan_gold_user:password@db:5432/rwshan_gold_db
+      - SECRET_KEY=your-secret-key-here
+
+  nginx:
+    image: nginx:1.19-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - static_volume:/app/staticfiles
+      - media_volume:/app/mediafiles
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:

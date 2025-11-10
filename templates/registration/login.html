@@ -1,0 +1,272 @@
+{% load static i18n %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Login - Rwshan Gold Company" %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    {% if LANGUAGE_CODE == 'ar' %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-tajawal/2.0.0/css/tajawal.min.css" rel="stylesheet">
+    {% else %}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    {% endif %}
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #D4AF37; /* Gold */
+            --secondary-color: #1a1a2e; /* Charcoal Gray */
+            --light-color: #f8f9fa; /* White */
+            --accent-color: #0d47a1; /* Navy Blue */
+            --text-color: #333;
+            --text-light: #777;
+            --border-color: #eee;
+            --font-family-ar: 'Tajawal', sans-serif;
+            --font-family-en: 'Poppins', sans-serif;
+            --transition: all 0.3s ease;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
+
+        body {
+            font-family: var(--font-family-en);
+            background: linear-gradient(135deg, #f9f9f9, #ffffff);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        html[dir="rtl"] body {
+            font-family: var(--font-family-ar);
+        }
+
+        .login-container {
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .login-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .login-header {
+            background: var(--gradient);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo-container {
+            margin-bottom: 15px;
+        }
+
+        .logo-container img {
+            height: 60px;
+        }
+
+        .login-header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .login-header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .login-body {
+            padding: 30px;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 15px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+        }
+
+        .btn-login {
+            background: var(--gradient);
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .alert-danger {
+            background-color: rgba(220, 53, 69, 0.1);
+            border: 1px solid rgba(220, 53, 69, 0.2);
+            border-radius: 8px;
+            color: #721c24;
+        }
+
+        .forgot-password {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .forgot-password:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group .form-control {
+            padding-right: 40px;
+        }
+
+        .input-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 15px;
+            color: var(--text-light);
+        }
+
+        html[dir="rtl"] .input-icon {
+            right: auto;
+            left: 15px;
+        }
+
+        @media (max-width: 576px) {
+            .login-body {
+                padding: 20px;
+            }
+            
+            .login-header {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo-container">
+                    <img src="{% static 'images/logo-white3.png' %}" alt="Rwshan Gold Company">
+                </div>
+                <p>{% trans "Sign in to your account" %}</p>
+            </div>
+            
+            <div class="login-body">
+                {% if form.errors %}
+                    <div class="alert alert-danger mb-4">
+                        <i class="fas fa-exclamation-circle me-2"></i>
+                        {% trans "Invalid username or password. Please try again." %}
+                    </div>
+                {% endif %}
+
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    
+                    <div class="mb-4">
+                        <label for="id_username" class="form-label">{% trans "Username" %}</label>
+                        <div class="input-group">
+                            {{ form.username }}
+                            <span class="input-icon">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="id_password" class="form-label">{% trans "Password" %}</label>
+                        <div class="input-group">
+                            {{ form.password }}
+                            <span class="input-icon">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-login">{% trans "Log In" %}</button>
+                    </div>
+                    
+                    <div class="text-center">
+                        <a href="{% url 'password_reset' %}" class="forgot-password">
+                            {% trans "Forgot your password?" %}
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-text">
+            <p>&copy; {% now "Y" %} {% trans "Rwshan Gold Company. All rights reserved." %}</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Add classes to form inputs for styling
+        document.addEventListener('DOMContentLoaded', function() {
+            const usernameInput = document.getElementById('id_username');
+            const passwordInput = document.getElementById('id_password');
+            
+            if (usernameInput) {
+                usernameInput.className = 'form-control';
+                usernameInput.placeholder = "{% trans 'Enter your username' %}";
+            }
+            
+            if (passwordInput) {
+                passwordInput.className = 'form-control';
+                passwordInput.placeholder = "{% trans 'Enter your password' %}";
+            }
+        });
+    </script>
+</body>
+</html>

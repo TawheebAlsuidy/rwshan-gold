@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{{ post.title }} - {% trans "Blog - Rwshan Gold Company" %}{% endblock %}
+
+{% block meta_description %}{{ post.meta_description|default:post.excerpt }}{% endblock %}
+
+{% block content %}
+<div class="container py-8">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <article class="blog-post">
+                <header class="mb-4">
+                    <h1>{{ post.title }}</h1>
+                    <div class="post-meta">
+                        <span class="text-muted">{{ post.published_at|date:"F d, Y" }}</span>
+                        <span class="mx-2">•</span>
+                        <span>{% trans "By" %} {{ post.author.get_full_name|default:post.author.username }}</span>
+                        <span class="mx-2">•</span>
+                        <a href="{% url 'blog:category_list' post.category.slug %}" class="text-primary">{{ post.category.name }}</a>
+                    </div>
+                </header>
+                
+                <div class="post-featured-image mb-4">
+                    <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="img-fluid rounded">
+                </div>
+                
+                <div class="post-content">
+                    {{ post.content|linebreaks }}
+                </div>
+                
+                <div class="post-tags mt-4">
+                    <!-- Tags would go here -->
+                </div>
+                
+                <div class="post-navigation mt-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Previous post would go here -->
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <!-- Next post would go here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="related-posts mt-5">
+                    <h3>{% trans "Related Posts" %}</h3>
+                    <div class="row">
+                        {% for related_post in related_posts %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="{{ related_post.featured_image.url }}" class="card-img-top" alt="{{ related_post.title }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ related_post.title }}</h5>
+                                    <a href="{% url 'blog:detail' related_post.slug %}" class="btn btn-sm btn-outline-primary">{% trans "Read" %}</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <div class="col-12">
+                            <p>{% trans "No related posts found." %}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="post-comments mt-5">
+                    <h3>{% trans "Comments" %}</h3>
+                    <!-- Comments section would go here -->
+                    <div class="alert alert-info">
+                        {% trans "Comments section would be implemented here." %}
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+{% endblock %}

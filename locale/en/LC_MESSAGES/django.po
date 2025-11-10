@@ -1,0 +1,568 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Home"
+msgstr ""
+
+msgid "About Us"
+msgstr ""
+
+msgid "Products"
+msgstr ""
+
+msgid "Design Your Uniform"
+msgstr ""
+
+msgid "Get a Quote"
+msgstr ""
+
+msgid "Blog"
+msgstr ""
+
+msgid "Contact"
+msgstr ""
+
+msgid "Professional Uniforms that Elevate Your Brand Image"
+msgstr ""
+
+msgid "Our Sectors"
+msgstr ""
+
+msgid "Why Choose Rwshan Gold?"
+msgstr ""
+
+msgid "Quality"
+msgstr ""
+
+msgid "Premium materials and craftsmanship"
+msgstr ""
+
+msgid "Innovation"
+msgstr ""
+
+msgid "Cutting-edge design and technology"
+msgstr ""
+
+msgid "Speed"
+msgstr ""
+
+msgid "Fast delivery and turnaround times"
+msgstr ""
+
+msgid "What Our Clients Say"
+msgstr ""
+
+msgid "View All Testimonials"
+msgstr ""
+
+msgid "Ready to Elevate Your Brand?"
+msgstr ""
+
+msgid "Get a free quote for your custom uniforms today"
+msgstr ""
+
+msgid "About Rwshan Gold Company"
+msgstr ""
+
+msgid "Price Calculator"
+msgstr ""
+
+msgid "Contact Us"
+msgstr ""
+
+msgid "SAR"
+msgstr ""
+msgid "School Uniforms"
+msgstr ""
+msgid "Medical Uniforms"
+msgstr ""
+msgid "Restaurants"
+msgstr ""
+msgid "Factories"
+msgstr ""
+
+msgid "We are committed to excellence in every stitch"
+msgstr ""
+
+msgid "Premium quality uniforms tailored to your business needs"
+msgstr ""
+
+msgid "We manufacture professional uniforms in large quantities"
+msgstr ""
+msgid "in a short time, in different sizes and multiple shapes for all sectors."
+msgstr ""
+
+
+msgid "Our Products"
+msgstr ""
+
+msgid "Quick Links"
+msgstr ""
+
+msgid "Select Product"
+msgstr ""
+msgid "Select Fabric"
+msgstr ""
+msgid "Select Color"
+msgstr ""
+
+msgid "Rwshan Gold Company is a leading manufacturer of professional uniforms in Saudi Arabia, committed to quality, innovation, and customer satisfaction."
+msgstr ""
+
+msgid "Leading Manufacturer of Professional Uniforms in Saudi Arabia"
+msgstr ""
+
+msgid "Our Story"
+msgstr ""
+
+msgid ""
+"Founded in Riyadh, Saudi Arabia, Rwshan Gold Company has established itself "
+"as a premier manufacturer and supplier of professional uniforms across "
+"multiple sectors. With years of experience in the industry, we have built a "
+"reputation for excellence, innovation, and reliability."
+msgstr ""
+
+msgid ""
+"Our commitment to quality craftsmanship and attention to detail has made us "
+"the preferred choice for leading businesses and institutions throughout the "
+"Kingdom."
+msgstr ""
+
+msgid "Our Vision"
+msgstr ""
+
+msgid ""
+"To be the leading provider of professional uniforms in Saudi Arabia, "
+"recognized for our quality, innovation, and commitment to customer "
+"satisfaction."
+msgstr ""
+
+msgid "Our Mission"
+msgstr ""
+
+msgid ""
+"To deliver high-quality, durable, and stylish uniforms that enhance our "
+"clients' brand image while providing exceptional value and service."
+msgstr ""
+
+msgid "Our Core Values"
+msgstr ""
+
+msgid "Precision in Design"
+msgstr ""
+
+msgid "Meticulous attention to detail in every uniform we create."
+msgstr ""
+
+msgid "Creativity & Flexibility"
+msgstr ""
+
+msgid "Innovative designs tailored to meet unique client needs."
+msgstr ""
+
+msgid "High-Quality Fabrics"
+msgstr ""
+
+msgid "Only the finest materials for comfort and durability."
+msgstr ""
+
+msgid "Commitment to Deadlines"
+msgstr ""
+
+msgid "Reliable delivery schedules you can count on."
+msgstr ""
+
+msgid "Our Process"
+msgstr ""
+
+msgid "Design"
+msgstr ""
+
+msgid "Collaborative design process to create the perfect uniform"
+msgstr ""
+
+msgid "Fabric Cutting"
+msgstr ""
+
+msgid "Precision cutting for consistent quality"
+msgstr ""
+
+msgid "Production"
+msgstr ""
+
+msgid "Expert craftsmanship in every stitch"
+msgstr ""
+
+msgid "Delivery"
+msgstr ""
+
+msgid "Timely delivery to your location"
+msgstr ""
+
+msgid "Our Facility"
+msgstr ""
+
+msgid "Aligned with Vision 2030"
+msgstr ""
+
+msgid ""
+"Rwshan Gold Company is proud to contribute to Saudi Arabia's Vision 2030 by "
+"supporting local manufacturing, creating job opportunities, and delivering "
+"world-class products that enhance the Kingdom's global image."
+msgstr ""
+
+msgid "Products - Rwshan Gold Company"
+msgstr ""
+
+msgid "Premium Professional Uniforms for Every Industry"
+msgstr ""
+
+msgid "No product categories available yet."
+msgstr ""
+
+msgid "View Products"
+msgstr ""
+
+msgid "Back to Categories"
+msgstr ""
+
+msgid "Products in this Category"
+msgstr ""
+
+msgid "No products available in this category yet."
+msgstr ""
+
+msgid "View Details"
+msgstr ""
+
+msgid "Customize"
+msgstr ""
+
+msgid "Starting price"
+msgstr ""
+
+msgid "Customization Options"
+msgstr ""
+
+msgid "Multiple fabric options"
+msgstr ""
+
+msgid "Custom colors"
+msgstr ""
+
+msgid "Logo embroidery"
+msgstr ""
+
+msgid "Size variations"
+msgstr ""
+
+msgid "Details"
+msgstr ""
+
+msgid "Specifications"
+msgstr ""
+
+msgid "Care Instructions"
+msgstr ""
+
+msgid "Product Details"
+msgstr ""
+
+msgid ""
+"Detailed information about the product would go here. This could include "
+"features, benefits, and other important details that customers should know."
+msgstr ""
+
+msgid "Material"
+msgstr ""
+
+msgid "Premium cotton blend"
+msgstr ""
+
+msgid "Weight"
+msgstr ""
+
+msgid "180 GSM"
+msgstr ""
+
+msgid "Available Sizes"
+msgstr ""
+
+msgid "XS, S, M, L, XL, XXL, XXXL"
+msgstr ""
+
+msgid "Customization"
+msgstr ""
+
+msgid "Embroidery, printing, color matching"
+msgstr ""
+
+msgid "Machine wash cold with like colors"
+msgstr ""
+
+msgid "Do not bleach"
+msgstr ""
+
+msgid "Tumble dry low"
+msgstr ""
+
+msgid "Iron on medium heat if needed"
+msgstr ""
+
+msgid "Do not dry clean"
+msgstr ""
+
+msgid "Related Products"
+msgstr ""
+
+msgid "Related products will be displayed here."
+msgstr ""
+
+msgid "Design Your Uniform - Rwshan Gold Company"
+msgstr ""
+
+msgid "Create a custom uniform that represents your brand"
+msgstr ""
+
+msgid "Select a Category"
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Customize Your Uniform - Rwshan Gold Company"
+msgstr ""
+
+msgid "Select Category"
+msgstr ""
+
+msgid "Customize Design"
+msgstr ""
+
+msgid "Preview & Save"
+msgstr ""
+
+msgid "Upload Logo (Optional)"
+msgstr ""
+
+msgid "Upload your company logo to be placed on the uniform"
+msgstr ""
+
+msgid "Additional Notes (Optional)"
+msgstr ""
+
+msgid "Continue to Preview"
+msgstr ""
+
+msgid "Back"
+msgstr ""
+
+msgid "Preview Your Design - Rwshan Gold Company"
+msgstr ""
+
+msgid "Uniform Preview"
+msgstr ""
+
+msgid "Design Details"
+msgstr ""
+
+msgid "Product"
+msgstr ""
+
+msgid "Fabric"
+msgstr ""
+
+msgid "Color"
+msgstr ""
+
+msgid "Logo"
+msgstr ""
+
+msgid "Uploaded"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Notes"
+msgstr ""
+
+msgid "Estimated Price"
+msgstr ""
+
+msgid "Edit Design"
+msgstr ""
+
+msgid "Get Quote"
+msgstr ""
+
+msgid "No design found. Please start over."
+msgstr ""
+
+msgid "Start Over"
+msgstr ""
+
+msgid "Price Calculator - Rwshan Gold Company"
+msgstr ""
+
+msgid "Get an instant estimate for your uniform order"
+msgstr ""
+
+msgid "Choose a product"
+msgstr ""
+
+msgid "Choose a fabric"
+msgstr ""
+
+msgid "Choose a color"
+msgstr ""
+
+msgid "Quantity"
+msgstr ""
+
+msgid "Logo Complexity"
+msgstr ""
+
+msgid "Simple"
+msgstr ""
+
+msgid "Medium"
+msgstr ""
+
+msgid "Complex"
+msgstr ""
+
+msgid "Base Price"
+msgstr ""
+
+msgid "Fabric Upgrade"
+msgstr ""
+
+msgid "Logo Fee"
+msgstr ""
+
+msgid "Unit Price"
+msgstr ""
+
+msgid "Quantity Discount"
+msgstr ""
+
+msgid "Request Official Quote"
+msgstr ""
+
+msgid "Blog - Rwshan Gold Company"
+msgstr ""
+
+msgid "Latest Insights"
+msgstr ""
+
+msgid "Read More"
+msgstr ""
+
+msgid "No blog posts available yet."
+msgstr ""
+
+msgid "Categories"
+msgstr ""
+
+msgid "Newsletter"
+msgstr ""
+
+msgid "Subscribe to our newsletter for updates and offers."
+msgstr ""
+
+msgid "Your email address"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
+
+msgid "By"
+msgstr ""
+
+msgid "No related posts found."
+msgstr ""
+
+msgid "Comments section would be implemented here."
+msgstr ""
+
+msgid "Contact Us - Rwshan Gold Company"
+msgstr ""
+
+msgid ""
+"We'd love to hear from you. Send us a message and we'll respond as soon as "
+"possible."
+msgstr ""
+
+msgid "Get in Touch"
+msgstr ""
+
+msgid "Send Message"
+msgstr ""
+
+msgid "Contact Information"
+msgstr ""
+
+msgid "Address"
+msgstr ""
+
+msgid "Riyadh, Saudi Arabia"
+msgstr ""
+
+msgid "Phone"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Business Hours"
+msgstr ""
+
+msgid "Monday - Friday: 9am - 5pm"
+msgstr ""
+
+msgid "Saturday: 10am - 2pm"
+msgstr ""
+
+msgid "Sunday: Closed"
+msgstr ""
+
+msgid "Follow Us"
+msgstr ""
+
+msgid "Frequently Asked Questions"
+msgstr ""
+
+msgid "What is your return policy?"
+msgstr ""
+
+msgid "Our return policy is 30 days."
+msgstr ""
+
+msgid "Your message has been sent successfully! We will contact you soon."
+msgstr ""
+
+msgid "Your quote request has been submitted successfully!"
+msgstr ""
+
+msgid "Home - Rwshan Gold Company"
+msgstr ""
+
+msgid "About Us - Rwshan Gold Company"
+msgstr ""
+
+msgid "Rwshan Gold Company - Premium Professional Uniforms"
+msgstr ""
+
+msgid "Rwshan Gold Company. All rights reserved."
+msgstr ""

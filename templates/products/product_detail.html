@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{{ product.name }} - {% trans "Products - Rwshan Gold Company" %}{% endblock %}
+
+{% block content %}
+<div class="container py-8">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="mb-4">
+                <a href="{% url 'products:category_detail' product.category.slug %}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> {% trans "Back to Category" %}
+                </a>
+            </div>
+
+            <div class="product-detail">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="product-image-gallery">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid rounded main-image">
+                            <div class="thumbnail-gallery mt-3">
+                                <!-- Additional product images would go here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="product-info">
+                            <h1>{{ product.name }}</h1>
+                            <div class="product-category">
+                                <a href="{% url 'products:category_detail' product.category.slug %}">{{ product.category.name }}</a>
+                            </div>
+                            <div class="product-price mb-3">
+                                <span class="price">{{ product.base_price }} SAR</span>
+                                <small>{% trans "Starting price" %}</small>
+                            </div>
+                            <div class="product-description">
+                                <p>{{ product.description }}</p>
+                            </div>
+                            
+                            <div class="product-options mt-4">
+                                <h4>{% trans "Customization Options" %}</h4>
+                                <div class="options-list">
+                                    <div class="option-item">
+                                        <i class="fas fa-check-circle text-success"></i> {% trans "Multiple fabric options" %}
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-check-circle text-success"></i> {% trans "Custom colors" %}
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-check-circle text-success"></i> {% trans "Logo embroidery" %}
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-check-circle text-success"></i> {% trans "Size variations" %}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="product-actions mt-4">
+                                <a href="{% url 'configurator:start' %}?product={{ product.id }}" class="btn btn-primary btn-lg">
+                                    {% trans "Design Your Uniform" %}
+                                </a>
+                                <a href="{% url 'quotes:calculator' %}?product={{ product.id }}&fabric={{ product.fabric.id }}&color={{ product.color.id }}" class="btn btn-outline-secondary btn-lg">
+                                    {% trans "Get a Quote" %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="product-tabs mt-5">
+                <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" role="tab">
+                            {% trans "Details" %}
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="specifications-tab" data-bs-toggle="tab" data-bs-target="#specifications" type="button" role="tab">
+                            {% trans "Specifications" %}
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="care-tab" data-bs-toggle="tab" data-bs-target="#care" type="button" role="tab">
+                            {% trans "Care Instructions" %}
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="productTabsContent">
+                    <div class="tab-pane fade show active" id="details" role="tabpanel">
+                        <div class="product-details">
+                            <h3>{% trans "Product Details" %}</h3>
+                            <p>{% trans "Detailed information about the product would go here. This could include features, benefits, and other important details that customers should know." %}</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="specifications" role="tabpanel">
+                        <div class="product-specifications">
+                            <h3>{% trans "Specifications" %}</h3>
+                            <table class="table">
+                                <tr>
+                                    <th>{% trans "Material" %}</th>
+                                    <td>{% trans "Premium cotton blend" %}</td>
+                                </tr>
+                                <tr>
+                                    <th>{% trans "Weight" %}</th>
+                                    <td>{% trans "180 GSM" %}</td>
+                                </tr>
+                                <tr>
+                                    <th>{% trans "Available Sizes" %}</th>
+                                    <td>{% trans "XS, S, M, L, XL, XXL, XXXL" %}</td>
+                                </tr>
+                                <tr>
+                                    <th>{% trans "Customization" %}</th>
+                                    <td>{% trans "Embroidery, printing, color matching" %}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="care" role="tabpanel">
+                        <div class="product-care">
+                            <h3>{% trans "Care Instructions" %}</h3>
+                            <ul>
+                                <li>{% trans "Machine wash cold with like colors" %}</li>
+                                <li>{% trans "Do not bleach" %}</li>
+                                <li>{% trans "Tumble dry low" %}</li>
+                                <li>{% trans "Iron on medium heat if needed" %}</li>
+                                <li>{% trans "Do not dry clean" %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="related-products mt-5">
+                <h3>{% trans "Related Products" %}</h3>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            {% trans "Related products will be displayed here." %}
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+{% endblock %}

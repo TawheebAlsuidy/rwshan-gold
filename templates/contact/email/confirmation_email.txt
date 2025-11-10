@@ -1,0 +1,33 @@
+Thank You for Contacting Rwshan Gold Company!
+=============================================
+
+Hello {{ name }}!
+
+We have received your message regarding "{{ subject }}" and appreciate you taking the time to write to us.
+
+What happens next?
+------------------
+- Our team will review your message carefully
+- We'll assign your inquiry to the appropriate department
+- You'll receive a detailed response within 24 hours
+
+Need Immediate Assistance?
+--------------------------
+For urgent matters, please contact us directly:
+Phone: 0986 686 55 966+
+Email: alroshangold@gmail.com
+
+Our Business Hours:
+-------------------
+- Monday - Friday: 9:00 AM - 5:00 PM
+- Saturday: 10:00 AM - 2:00 PM
+- Sunday: Closed
+
+We value your interest in Rwshan Gold Company and look forward to assisting you with your uniform needs.
+
+Best regards,
+The Rwshan Gold Company Team
+
+---
+This is an automated confirmation email. Please do not reply to this message.
+If you need to contact us, please use the information provided above.

@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Case Studies - Rwshan Gold Company" %}{% endblock %}
+
+{% block meta_description %}{% trans "Explore our success stories and case studies. See how Rwshan Gold Company has helped businesses transform their professional image with custom uniforms." %}{% endblock %}
+
+{% block extra_css %}
+<style>
+.case-study-card {
+    background: white;
+    border-radius: 15px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    height: 100%;
+    overflow: hidden;
+}
+
+.case-study-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    border-color: #007bff;
+}
+
+.case-study-image {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.case-study-content {
+    padding: 1.5rem;
+}
+
+.read-more-btn {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    border: none;
+    border-radius: 25px;
+    padding: 8px 20px;
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+    background: linear-gradient(45deg, #0056b3, #004085);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 80px 0;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.client-logo-small {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container position-relative">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold mb-4">{% trans "Case Studies" %}</h1>
+                <p class="lead mb-4">
+                    {% trans "Explore how we've helped businesses achieve remarkable results through our professional uniform solutions." %}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Case Studies Grid -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            {% for case_study in case_studies %}
+            <div class="col-lg-4 col-md-6">
+                <div class="case-study-card">
+                    {% if case_study.after_image %}
+                    <img src="{{ case_study.after_image.url }}" alt="{{ case_study.title }}" class="case-study-image">
+                    {% else %}
+                    <div class="case-study-image bg-primary d-flex align-items-center justify-content-center">
+                        <i class="fas fa-chart-line text-white display-4"></i>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="case-study-content">
+                        <div class="d-flex align-items-center mb-3">
+                            {% if case_study.client.logo %}
+                            <img src="{{ case_study.client.logo.url }}" alt="{{ case_study.client.name }}" class="client-logo-small me-2">
+                            {% endif %}
+                            <span class="text-muted small">{{ case_study.client.name }}</span>
+                        </div>
+                        
+                        <h3 class="h5 fw-bold mb-3">{{ case_study.title }}</h3>
+                        
+                        <p class="text-muted mb-4">
+                            {{ case_study.excerpt|default:case_study.content|truncatewords:20 }}
+                        </p>
+                        
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted small">{{ case_study.created_at|date:"M d, Y" }}</span>
+                            <a href="{{ case_study.get_absolute_url }}" class="read-more-btn">
+                                {% trans "Read More" %} <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <i class="fas fa-folder-open text-muted display-1 mb-4"></i>
+                <h3 class="h2 text-muted mb-3">{% trans "No Case Studies Yet" %}</h3>
+                <p class="text-muted lead">{% trans "We're working on sharing our success stories. Stay tuned!" %}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        {% if is_paginated %}
+        <div class="row mt-5">
+            <div class="col-12">
+                <nav aria-label="Case studies pagination">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                        
+                        {% for num in page_obj.paginator.page_range %}
+                        <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                        </li>
+                        {% endfor %}
+                        
+                        {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

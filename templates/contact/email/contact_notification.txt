@@ -1,0 +1,19 @@
+NEW CONTACT MESSAGE - Rwshan Gold Company
+==========================================
+
+CONTACT DETAILS:
+----------------
+Name: {{ name }}
+Email: {{ email }}
+Phone: {{ phone }}
+Subject: {{ subject }}
+
+MESSAGE:
+--------
+{{ message }}
+
+Received at: {{ created_at }}
+
+---
+This message was automatically sent from the contact form on your website.
+Please respond to the sender within 24 hours.

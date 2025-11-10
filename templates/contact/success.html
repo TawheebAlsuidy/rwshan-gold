@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Message Sent Successfully - Rwshan Gold Company" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .success-hero {
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+        margin-bottom: 50px;
+        margin-top: 85px;
+    }
+    
+    .success-icon {
+        font-size: 5rem;
+        margin-bottom: 2rem;
+        animation: bounce 1s ease-in-out;
+    }
+    
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+        40% {transform: translateY(-30px);}
+        60% {transform: translateY(-15px);}
+    }
+    
+    .success-hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+    
+    .success-hero .lead {
+        font-size: 1.25rem;
+        opacity: 0.9;
+    }
+    
+    .next-steps {
+        background: white;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        margin-top: -50px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .step-card {
+        text-align: center;
+        padding: 30px 20px;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+    
+    .step-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .step-icon {
+        width: 80px;
+        height: 80px;
+        background: #e7f3ff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px auto;
+        font-size: 2rem;
+        color: #007bff;
+    }
+    
+    .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 40px auto;
+    }
+    
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #007bff;
+        transform: translateX(-50%);
+    }
+    
+    .timeline-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+    
+    .timeline-content {
+        width: 45%;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .timeline-content.left {
+        text-align: right;
+    }
+    
+    .timeline-dot {
+        width: 20px;
+        height: 20px;
+        background: #007bff;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .contact-support {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 60px 0;
+        text-align: center;
+        border-radius: 15px;
+        margin-top: 50px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Success Hero Section -->
+<div class="success-hero">
+    <div class="container">
+        <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h1>{% trans "Message Sent Successfully!" %}</h1>
+        <p class="lead">{% trans "Thank you for contacting Rwshan Gold Company. We have received your message and will get back to you soon." %}</p>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Next Steps -->
+    <div class="next-steps">
+        <div class="text-center mb-5">
+            <h2>{% trans "What Happens Next?" %}</h2>
+            <p class="lead text-muted">{% trans "Here's what you can expect in the coming hours" %}</p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content left">
+                    <h4>{% trans "Immediate Confirmation" %}</h4>
+                    <p class="text-muted">{% trans "You've received a confirmation email with details of your submission." %}</p>
+                </div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content" style="visibility: hidden;"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content" style="visibility: hidden;"></div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>{% trans "Review Process" %}</h4>
+                    <p class="text-muted">{% trans "Our team is reviewing your message and will assign it to the appropriate department." %}</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content left">
+                    <h4>{% trans "Response Preparation" %}</h4>
+                    <p class="text-muted">{% trans "We're preparing a comprehensive response to address all your questions and concerns." %}</p>
+                </div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content" style="visibility: hidden;"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content" style="visibility: hidden;"></div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>{% trans "Final Response" %}</h4>
+                    <p class="text-muted">{% trans "You'll receive a detailed response from our team within 24 hours." %}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="row mt-5">
+            <div class="col-md-4 mb-4">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h4>{% trans "Return Home" %}</h4>
+                    <p class="text-muted">{% trans "Go back to our homepage and explore more about our services." %}</p>
+                    <a href="{% url 'core:home' %}" class="btn btn-outline-primary">{% trans "Homepage" %}</a>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h4>{% trans "Browse FAQs" %}</h4>
+                    <p class="text-muted">{% trans "Check our frequently asked questions for instant answers." %}</p>
+                    <a href="{% url 'contact:faq' %}" class="btn btn-outline-primary">{% trans "View FAQs" %}</a>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h4>{% trans "Our Products" %}</h4>
+                    <p class="text-muted">{% trans "Explore our catalog of premium uniforms and custom designs." %}</p>
+                    <a href="{% url 'products:category_list' %}" class="btn btn-outline-primary">{% trans "View Products" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Support CTA -->
+    <div class="contact-support">
+        <h2>{% trans "Need Immediate Assistance?" %}</h2>
+        <p class="lead mb-4">{% trans "For urgent matters, don't hesitate to contact us directly" %}</p>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <a href="tel:+966556860986" class="btn btn-light btn-lg me-3">
+                    <i class="fas fa-phone me-2"></i>
+                    0986 686 55 966+
+                </a>
+            </div>
+            <div class="col-auto">
+                <a href="mailto:alroshangold@gmail.com" class="btn btn-light btn-lg">
+                    <i class="fas fa-envelope me-2"></i>
+                    {% trans "Email Us" %}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

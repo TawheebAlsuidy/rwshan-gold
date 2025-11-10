@@ -1,0 +1,359 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{{ quote.company_name }} - {{ quote.product.name }}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .detail-card {
+        border-radius: 12px;
+        border: 1px solid #e9ecef;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        overflow: hidden;
+        background: white;
+    }
+    
+    .detail-header {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 24px 30px;
+        border-bottom: 1px solid #e9ecef;
+    }
+    
+    .detail-body {
+        padding: 30px;
+    }
+    
+    .info-row {
+        display: flex;
+        padding: 16px 0;
+        border-bottom: 1px solid #f1f3f4;
+        align-items: flex-start;
+    }
+    
+    .info-row:last-child {
+        border-bottom: none;
+    }
+    
+    .info-label {
+        flex: 0 0 200px;
+        font-weight: 600;
+        color: #495057;
+    }
+    
+    .info-value {
+        flex: 1;
+        color: #212529;
+    }
+    
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        display: inline-block;
+    }
+    
+    .status-pending {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+    
+    .status-processing {
+        background-color: #cce7ff;
+        color: #004085;
+    }
+    
+    .status-completed {
+        background-color: #d1f2eb;
+        color: #0c5460;
+    }
+    
+    .status-rejected {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+    
+    .price-highlight {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #d4af37;
+    }
+    
+    .product-image-container {
+        width: 120px;
+        height: 120px;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        margin-right: 20px;
+        border: 1px solid #e9ecef;
+    }
+    
+    .product-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+    
+    .product-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #495057;
+        margin: 30px 0 15px 0;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #e9ecef;
+    }
+    
+    .notes-container {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 16px 20px;
+        margin-top: 8px;
+    }
+    
+    .back-btn {
+        border-radius: 8px;
+        padding: 12px 24px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .back-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    @media (max-width: 768px) {
+        .info-row {
+            flex-direction: column;
+        }
+        
+        .info-label {
+            flex: none;
+            margin-bottom: 5px;
+        }
+        
+        .product-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .product-image-container {
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-8">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <!-- Header Section -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="display-5 fw-bold gold-text mb-2">{% trans "Quote Request Details" %}</h1>
+                    <p class="text-muted">{% trans "Review the details of your custom gold product request" %}</p>
+                </div>
+                <div class="text-end">
+                    <div class="text-muted small">{% trans "Request Date" %}</div>
+                    <div class="fw-semibold">{{ quote.created_at|date:"d M Y" }}</div>
+                </div>
+            </div>
+            
+            <!-- Main Detail Card -->
+            <div class="detail-card mb-5">
+                <!-- Product Header -->
+                <div class="detail-header">
+                    <div class="product-header">
+                        <div class="product-image-container">
+                            {% if quote.product.image %}
+                                <img src="{{ quote.product.image.url }}" alt="{{ quote.product.name }}" class="product-image">
+                            {% else %}
+                                <i class="fas fa-gem fa-2x text-muted"></i>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <h2 class="h3 mb-1">{{ quote.product.name }}</h2>
+                            <p class="text-muted mb-0">{{ quote.company_name }}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="detail-body">
+                    <!-- Product Details Section -->
+                    <h3 class="section-title">{% trans "Product Specifications" %}</h3>
+                    
+                    <div class="info-row">
+                        <div class="info-label">{% trans "Product" %}</div>
+                        <div class="info-value">{{ quote.product.name }}</div>
+                    </div>
+                    
+                    {% if quote.fabric %}
+                    <div class="info-row">
+                        <div class="info-label">{% trans "Fabric" %}</div>
+                        <div class="info-value">{{ quote.fabric.name }}</div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if quote.color %}
+                    <div class="info-row">
+                        <div class="info-label">{% trans "Color" %}</div>
+                        <div class="info-value">{{ quote.color.name }}</div>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="info-row">
+                        <div class="info-label">{% trans "Quantity" %}</div>
+                        <div class="info-value">{{ quote.quantity }}</div>
+                    </div>
+                    
+                    {% if quote.logo_complexity %}
+                    <div class="info-row">
+                        <div class="info-label">{% trans "Logo Complexity" %}</div>
+                        <div class="info-value">{{ quote.get_logo_complexity_display }}</div>
+                    </div>
+                    {% endif %}
+                    
+                    <!-- Pricing Section -->
+                    <h3 class="section-title">{% trans "Pricing & Status" %}</h3>
+                    
+                    <div class="info-row">
+                        <div class="info-label">{% trans "Status" %}</div>
+                        <div class="info-value">
+                            {% if quote.status == 'pending' %}
+                                <span class="status-badge status-pending">{{ quote.get_status_display }}</span>
+                            {% elif quote.status == 'processing' %}
+                                <span class="status-badge status-processing">{{ quote.get_status_display }}</span>
+                            {% elif quote.status == 'completed' %}
+                                <span class="status-badge status-completed">{{ quote.get_status_display }}</span>
+                            {% elif quote.status == 'rejected' %}
+                                <span class="status-badge status-rejected">{{ quote.get_status_display }}</span>
+                            {% else %}
+                                <span class="status-badge">{{ quote.get_status_display }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="info-row">
+                        <div class="info-label">{% trans "Estimated Price" %}</div>
+                        <div class="info-value">
+                            {% if quote.estimated_price %}
+                                <span class="price-highlight">{{ quote.estimated_price }} SAR</span>
+                            {% else %}
+                                <span class="text-muted">{% trans "Pending estimate" %}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Information Section -->
+                    <h3 class="section-title">{% trans "Contact Information" %}</h3>
+                    
+                    <div class="info-row">
+                        <div class="info-label">{% trans "Company Name" %}</div>
+                        <div class="info-value">{{ quote.company_name }}</div>
+                    </div>
+                    
+                    <div class="info-row">
+                        <div class="info-label">{% trans "Contact Person" %}</div>
+                        <div class="info-value">{{ quote.contact_person }}</div>
+                    </div>
+                    
+                    <div class="info-row">
+                        <div class="info-label">{% trans "Email" %}</div>
+                        <div class="info-value">
+                            <a href="mailto:{{ quote.email }}" class="text-decoration-none">{{ quote.email }}</a>
+                        </div>
+                    </div>
+                    
+                    <div class="info-row">
+                        <div class="info-label">{% trans "Phone" %}</div>
+                        <div class="info-value">
+                            <a href="tel:{{ quote.phone }}" class="text-decoration-none">{{ quote.phone }}</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Notes -->
+                    {% if quote.notes %}
+                    <h3 class="section-title">{% trans "Additional Notes" %}</h3>
+                    
+                    <div class="info-row">
+                        <div class="info-label">{% trans "Special Requirements" %}</div>
+                        <div class="info-value">
+                            <div class="notes-container">
+                                {{ quote.notes|linebreaks }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <!-- <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
+                <a href="{% url 'quotes:list' %}" class="btn btn-outline-primary back-btn">
+                    <i class="fas fa-arrow-left me-2"></i> {% trans "Back to My Quotes" %}
+                </a>
+                
+                {% if quote.status == 'completed' and quote.estimated_price %}
+                <button class="btn btn-primary back-btn">
+                    <i class="fas fa-check-circle me-2"></i> {% trans "Accept Quote" %}
+                </button>
+                
+                <button class="btn btn-outline-secondary back-btn">
+                    <i class="fas fa-comment me-2"></i> {% trans "Request Revision" %}
+                </button>
+                {% endif %}
+            </div> -->
+            <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
+                <a href="{% url 'quotes:list' %}" class="btn btn-outline-primary back-btn">
+                    <i class="fas fa-arrow-left me-2"></i> {% trans "Back to My Quotes" %}
+                </a>
+                
+                {% if not request.user.is_authenticated %}
+                <div class="alert alert-warning text-center mt-3">
+                    <small>
+                        <i class="fas fa-exclamation-triangle me-1"></i>
+                        {% trans "This quote is saved in your current browser session only." %}
+                    </small>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add any interactive functionality if needed
+        // For example, handling the accept quote or request revision buttons
+        const acceptBtn = document.querySelector('.btn-primary');
+        if (acceptBtn) {
+            acceptBtn.addEventListener('click', function() {
+                // Add your accept quote logic here
+                alert('{% trans "Thank you for accepting the quote! We will contact you shortly to proceed with your order." %}');
+            });
+        }
+        
+        const revisionBtn = document.querySelector('.btn-outline-secondary');
+        if (revisionBtn) {
+            revisionBtn.addEventListener('click', function() {
+                // Add your revision request logic here
+                alert('{% trans "We have noted your request for revision. Our team will review your requirements and get back to you soon." %}');
+            });
+        }
+    });
+</script>
+{% endblock %}

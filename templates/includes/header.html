@@ -1,0 +1,60 @@
+    <header class="main-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="contact-info">
+                            <a href="tel:+966556860986">
+                                <i class="fas fa-phone-alt"></i> 0986 686 55 966+
+                            </a>
+                            <a href="mailto:alroshangold@gmail.com">
+                                <i class="fas fa-envelope"></i> alroshangold@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-start">
+                        {% include 'includes/language_switcher.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="logo">
+                            <a href="{% url 'core:home' %}">
+                                <img src="{% static 'images/logo.png' %}" alt="Rwshan Gold Company">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <nav class="main-nav">
+                            <div class="menu-toggle">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <ul class="nav-menu">
+                                <li><a href="{% url 'core:home' %}">{% trans "Home" %}</a></li>
+                                <li><a href="{% url 'core:about' %}">{% trans "About Us" %}</a></li>
+                                <li class="dropdown">
+                                    <a href="{% url 'products:category_list' %}">{% trans "Products" %} <i class="fas fa-chevron-down"></i></a>
+                                    <ul class="dropdown-menu">
+                                        {% for category in product_categories %}
+                                        <li><a href="{% url 'products:category_detail' category.slug %}">{{ category.name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                                <li><a href="{% url 'configurator:start' %}">{% trans "Design Your Uniform" %}</a></li>
+                                <li><a href="{% url 'quotes:calculator' %}">{% trans "Get a Quote" %}</a></li>
+                                <li><a href="{% url 'blog:list' %}">{% trans "Blog" %}</a></li>
+                                <li><a href="{% url 'contact:contact' %}">{% trans "Contact" %}</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>

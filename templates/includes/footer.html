@@ -1,0 +1,78 @@
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-about">
+                        <div class="footer-logo">
+                            <img src="{% static 'images/logo-white3.png' %}" alt="Rwshan Gold Company" width="170px" height="50px">
+                        </div>
+                        <p>{% trans "Rwshan Gold Company is a leading manufacturer of professional uniforms in Saudi Arabia, committed to quality, innovation, and customer satisfaction." %}</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h3>{% trans "Quick Links" %}</h3>
+                        <ul>
+                            <li><a href="{% url 'core:home' %}">{% trans "Home" %}</a></li>
+                            <li><a href="{% url 'core:about' %}">{% trans "About Us" %}</a></li>
+                            <li><a href="{% url 'products:category_list' %}">{% trans "Products" %}</a></li>
+                            <li><a href="{% url 'configurator:start' %}">{% trans "Design Your Uniform" %}</a></li>
+                            <li><a href="{% url 'quotes:calculator' %}">{% trans "Get a Quote" %}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-contact">
+                        <h3>{% trans "Contact Us" %}</h3>
+                        <ul>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>{% trans "Riyadh, Saudi Arabia" %}</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone-alt"></i>
+                                <a href="tel:+966556860986">0986 686 55 966+</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:alroshangold@gmail.com">alroshangold@gmail.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-newsletter">
+                        <h3>{% trans "Newsletter" %}</h3>
+                        <p>{% trans "Subscribe to our newsletter for updates and offers." %}</p>
+                        <form class="newsletter-form">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="{% trans 'Your email address' %}" required>
+                                <button class="btn btn-primary" type="submit">{% trans "Subscribe" %}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; {% now "Y" %} {% trans "Rwshan Gold Company. All rights reserved." %}</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="footer-bottom-links">
+                        <a href="#">{% trans "Privacy Policy" %}</a>
+                        <a href="#">{% trans "Terms of Service" %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

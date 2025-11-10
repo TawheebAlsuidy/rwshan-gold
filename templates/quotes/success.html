@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Quote Request Submitted - Rwshan Gold Company" %}{% endblock %}
+
+{% block content %}
+<div class="container py-8">
+    <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+            <div class="card shadow-sm p-5">
+                <h1 class="display-4 text-success mb-3">{% trans "Success!" %}</h1>
+                <p class="lead mb-4">
+                    {% trans "Your quote request has been submitted successfully." %}
+                </p>
+                {% if object %}
+                <p class="mb-4">
+                    {% trans "Your Quote Request ID is:" %} <strong>{{ object.id }}</strong>
+                </p>
+                {% endif %}
+                <div class="d-grid gap-2">
+                    <a href="{% url 'core:home' %}" class="btn btn-primary btn-lg">{% trans "Go to Homepage" %}</a>
+                    <a href="{% url 'quotes:list' %}" class="btn btn-outline-secondary btn-lg">{% trans "View My Quotes" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

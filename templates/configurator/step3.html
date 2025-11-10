@@ -1,0 +1,537 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Finalize Your Design - Rwshan Gold Company" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Premium Progress Steps */
+    .configurator-steps {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+        margin: 60px 0;
+        position: relative;
+    }
+
+    .configurator-steps::before {
+        content: '';
+        position: absolute;
+        top: 25px;
+        left: 15%;
+        right: 15%;
+        height: 2px;
+        background: linear-gradient(90deg, 
+            #d4af37 0%, 
+            rgba(212, 175, 55, 0.3) 50%, 
+            #d4af37 100%);
+        z-index: 1;
+    }
+
+    .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .step-number {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        margin-bottom: 12px;
+        border: 2px solid rgba(212, 175, 55, 0.3);
+        background: white;
+        color: #6c757d;
+        transition: all 0.4s ease;
+        font-size: 1.1rem;
+    }
+
+    .step.active .step-number {
+        background: linear-gradient(135deg, #d4af37, #b8941f);
+        border-color: #d4af37;
+        color: white;
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    }
+
+    .step.completed .step-number {
+        background: #28a745;
+        border-color: #28a745;
+        color: white;
+    }
+
+    .step-title {
+        font-weight: 600;
+        color: #6c757d;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .step.active .step-title {
+        color: #d4af37;
+        font-weight: 700;
+    }
+
+    /* Final Design Card */
+    .final-design-card {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+        overflow: hidden;
+        border: 1px solid #f1f3f4;
+        margin-bottom: 40px;
+    }
+
+    .card-header-premium {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        color: white;
+        padding: 30px 40px;
+        border-bottom: none;
+    }
+
+    .card-header-premium h2 {
+        margin: 0;
+        font-weight: 600;
+        font-size: 1.8rem;
+    }
+
+    .card-body-premium {
+        padding: 40px;
+    }
+
+    /* Design Summary */
+    .design-summary {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .design-preview-section {
+        text-align: center;
+    }
+
+    .preview-container {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 20px;
+    }
+
+    .design-preview {
+        position: relative;
+        display: inline-block;
+        max-width: 100%;
+    }
+
+    .uniform-img {
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        max-width: 300px;
+        width: 100%;
+    }
+
+    .logo-overlay {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 80px;
+        max-height: 80px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .design-details-section {
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 30px;
+    }
+
+    .design-code {
+        background: linear-gradient(135deg, #d4af37, #b8941f);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .details-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .details-table tr {
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .details-table tr:last-child {
+        border-bottom: none;
+    }
+
+    .details-table th,
+    .details-table td {
+        padding: 12px 0;
+        text-align: left;
+    }
+
+    .details-table th {
+        font-weight: 600;
+        color: #495057;
+        width: 40%;
+    }
+
+    .details-table td {
+        color: #6c757d;
+        font-weight: 500;
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+        background: linear-gradient(135deg, #f8f9fa, #ffffff);
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 30px;
+        border: 2px solid #e9ecef;
+    }
+
+    .pricing-breakdown {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .price-item {
+        text-align: center;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .price-label {
+        font-size: 0.9rem;
+        color: #6c757d;
+        margin-bottom: 5px;
+    }
+
+    .price-value {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    .total-price {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 2px solid #e9ecef;
+    }
+
+    .total-price .price-value {
+        font-size: 2rem;
+        color: #d4af37;
+        font-weight: 700;
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 40px;
+    }
+
+    .btn-gold {
+        background: linear-gradient(135deg, #d4af37, #b8941f);
+        border: none;
+        color: white;
+        padding: 16px 30px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .btn-gold:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        color: white;
+    }
+
+    .btn-outline-gold {
+        border: 2px solid #d4af37;
+        color: #d4af37;
+        padding: 14px 30px;
+        border-radius: 12px;
+        font-weight: 600;
+        background: transparent;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .btn-outline-gold:hover {
+        background: #d4af37;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .btn-success {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        border: none;
+        color: white;
+        padding: 16px 30px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .btn-success:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+        color: white;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .configurator-steps {
+            gap: 30px;
+        }
+
+        .card-body-premium {
+            padding: 25px;
+        }
+
+        .design-summary {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .action-buttons {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .configurator-steps {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .configurator-steps::before {
+            display: none;
+        }
+
+        .step {
+            flex-direction: row;
+            gap: 15px;
+        }
+
+        .step-number {
+            margin-bottom: 0;
+        }
+
+        .pricing-breakdown {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Premium Progress Steps -->
+    <div class="configurator-steps">
+        <div class="step completed">
+            <div class="step-number">1</div>
+            <div class="step-title">{% trans "Select Category" %}</div>
+        </div>
+        <div class="step completed">
+            <div class="step-number">2</div>
+            <div class="step-title">{% trans "Customize Design" %}</div>
+        </div>
+        <div class="step active">
+            <div class="step-number">3</div>
+            <div class="step-title">{% trans "Finalize Design" %}</div>
+        </div>
+    </div>
+
+    <!-- Final Design Card -->
+    <div class="final-design-card">
+        <div class="card-header-premium">
+            <h2><i class="fas fa-check-circle me-2"></i>{% trans "Finalize Your Design" %}</h2>
+        </div>
+        
+        <div class="card-body-premium">
+            {% if design %}
+            <!-- Design Summary -->
+            <div class="design-summary">
+                <!-- Design Preview -->
+                <div class="design-preview-section">
+                    <div class="preview-container">
+                        <div class="design-preview">
+                            {% if design.ai_preview %}
+                                <img src="{{ design.ai_preview.url }}" alt="Uniform Design" class="uniform-img">
+                            {% else %}
+                                <div class="placeholder-design bg-light rounded d-flex align-items-center justify-content-center" style="width: 300px; height: 400px;">
+                                    <div class="text-center text-muted">
+                                        <i class="fas fa-tshirt fa-3x mb-3"></i>
+                                        <p>{% trans "Design Preview" %}</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            {% if design.logo %}
+                                <img src="{{ design.logo.url }}" alt="Company Logo" class="logo-overlay">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="design-code">
+                        <i class="fas fa-hashtag me-2"></i>{{ design.design_code }}
+                    </div>
+                </div>
+
+                <!-- Design Details -->
+                <div class="design-details-section">
+                    <h4 class="mb-4">{% trans "Design Specifications" %}</h4>
+                    <table class="details-table">
+                        <tr>
+                            <th>{% trans "Product" %}</th>
+                            <td>{{ design.product.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>{% trans "Fabric" %}</th>
+                            <td>{{ design.fabric.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>{% trans "Color" %}</th>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div style="width: 20px; height: 20px; background-color: {{ design.color }}; border-radius: 4px; border: 1px solid #dee2e6;"></div>
+                                    <span>{{ design.color }}</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{% trans "Logo" %}</th>
+                            <td>
+                                {% if design.logo %}
+                                    <span class="badge bg-success">{% trans "Included" %}</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">{% trans "Not Included" %}</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{% trans "Special Notes" %}</th>
+                            <td>{{ design.notes|default:"None" }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Pricing Section -->
+            <div class="pricing-section">
+                <h4 class="text-center mb-4">{% trans "Estimated Pricing" %}</h4>
+                <div class="pricing-breakdown">
+                    <div class="price-item">
+                        <div class="price-label">{% trans "Base Product" %}</div>
+                        <div class="price-value">{{ pricing_breakdown.base_price }} SAR</div>
+                    </div>
+                    <div class="price-item">
+                        <div class="price-label">{% trans "Fabric Upgrade" %}</div>
+                        <div class="price-value">{{ pricing_breakdown.fabric_upgrade }} SAR</div>
+                    </div>
+                    {% if pricing_breakdown.logo_service > 0 %}
+                    <div class="price-item">
+                        <div class="price-label">{% trans "Logo Service" %}</div>
+                        <div class="price-value">{{ pricing_breakdown.logo_service }} SAR</div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="total-price">
+                    <div class="price-label">{% trans "Total Estimated Price" %}</div>
+                    <div class="price-value">{{ pricing_breakdown.total }} SAR</div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <a href="{% url 'configurator:step2' %}" class="btn btn-outline-gold">
+                    <i class="fas fa-edit me-2"></i>{% trans "Edit Design" %}
+                </a>
+                <a href="{% url 'configurator:quote' %}" class="btn btn-gold">
+                    <i class="fas fa-file-invoice me-2"></i>{% trans "Get Detailed Quote" %}
+                </a>
+                <form method="post" action="{% url 'configurator:finalize' %}" class="d-grid">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save me-2"></i>{% trans "Save & Finalize Design" %}
+                    </button>
+                </form>
+            </div>
+
+            {% else %}
+            <!-- No Design Found -->
+            <div class="text-center py-5">
+                <i class="fas fa-exclamation-triangle fa-3x text-warning mb-3"></i>
+                <h4 class="text-muted mb-3">{% trans "No Design Found" %}</h4>
+                <p class="text-muted mb-4">{% trans "Please start over to create your custom uniform design." %}</p>
+                <a href="{% url 'configurator:start' %}" class="btn btn-gold">
+                    <i class="fas fa-redo me-2"></i>{% trans "Start Over" %}
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Related Products Section -->
+    {% if related_products %}
+    <div class="related-products mt-5">
+        <h3 class="text-center mb-4">{% trans "You Might Also Like" %}</h3>
+        <div class="row">
+            {% for product in related_products %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text text-muted small">{{ product.description|truncatewords:10 }}</p>
+                        <span class="badge bg-primary">{{ product.base_price }} SAR</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

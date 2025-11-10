@@ -1,0 +1,342 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Design Your Uniform - Rwshan Gold Company" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Premium Hero Section */
+    .configurator-hero {
+        background: linear-gradient(135deg, 
+            rgba(21, 21, 21, 0.97) 0%, 
+            rgb(255 202 75) 50%, 
+            rgba(21, 21, 21, 0.97) 100%),
+            url('{% static "images/luxury-texture.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 120px 0 80px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .configurator-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 30% 50%, 
+            rgba(212, 175, 55, 0.15) 0%, 
+            transparent 50%);
+    }
+
+    .configurator-hero h1 {
+        font-size: 3.5rem;
+        font-weight: 300;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, #ffffff, #d4af37);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.5px;
+    }
+
+    .configurator-hero .lead {
+        font-size: 1.3rem;
+        font-weight: 300;
+        max-width: 600px;
+        margin: 0 auto;
+        opacity: 0.9;
+        line-height: 1.6;
+    }
+
+    /* Premium Progress Steps */
+    .configurator-steps {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+        margin: 60px 0;
+        position: relative;
+    }
+
+    .configurator-steps::before {
+        content: '';
+        position: absolute;
+        top: 25px;
+        left: 15%;
+        right: 15%;
+        height: 2px;
+        background: linear-gradient(90deg, 
+            #d4af37 0%, 
+            rgba(212, 175, 55, 0.3) 50%, 
+            #d4af37 100%);
+        z-index: 1;
+    }
+
+    .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .step-number {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        margin-bottom: 12px;
+        border: 2px solid rgba(212, 175, 55, 0.3);
+        background: white;
+        color: #6c757d;
+        transition: all 0.4s ease;
+        font-size: 1.1rem;
+    }
+
+    .step.active .step-number {
+        background: linear-gradient(135deg, #d4af37, #b8941f);
+        border-color: #d4af37;
+        color: white;
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    }
+
+    .step.completed .step-number {
+        background: #28a745;
+        border-color: #28a745;
+        color: white;
+    }
+
+    .step-title {
+        font-weight: 600;
+        color: #6c757d;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .step.active .step-title {
+        color: #d4af37;
+        font-weight: 700;
+    }
+
+    /* Premium Category Grid */
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        margin: 60px 0;
+    }
+
+    .category-card {
+        background: linear-gradient(145deg, #ffffff, #f8f9fa);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
+    .category-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, 
+            transparent, 
+            rgba(212, 175, 55, 0.5), 
+            transparent);
+    }
+
+    .category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .category-icon {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    }
+
+    .category-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .category-card:hover .category-icon img {
+        transform: scale(1.08);
+    }
+
+    .category-content {
+        padding: 30px;
+        text-align: center;
+    }
+
+    .category-content h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 12px;
+    }
+
+    .category-content p {
+        color: #6c757d;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+    }
+
+    .btn-premium {
+        background: linear-gradient(135deg, #d4af37, #b8941f);
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-premium:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        color: white;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .configurator-hero {
+            padding: 100px 0 60px;
+        }
+
+        .configurator-hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .configurator-steps {
+            gap: 30px;
+        }
+
+        .configurator-steps::before {
+            left: 10%;
+            right: 10%;
+        }
+
+        .category-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .configurator-hero {
+            padding: 80px 0 40px;
+        }
+
+        .configurator-hero h1 {
+            font-size: 2rem;
+        }
+
+        .configurator-steps {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .configurator-steps::before {
+            display: none;
+        }
+
+        .step {
+            flex-direction: row;
+            gap: 15px;
+        }
+
+        .step-number {
+            margin-bottom: 0;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Premium Hero Section -->
+<section class="configurator-hero">
+    <div class="container py-8">
+        <h1>{% trans "Design Your Uniform" %}</h1>
+        <p class="lead">{% trans "Create a custom uniform that represents your brand" %}</p>
+    </div>
+</section>
+
+<div class="container">
+    <!-- Premium Progress Steps -->
+    <div class="configurator-steps">
+        <div class="step active">
+            <div class="step-number">1</div>
+            <div class="step-title">{% trans "Select Category" %}</div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-title">{% trans "Customize Design" %}</div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-title">{% trans "Preview & Save" %}</div>
+        </div>
+    </div>
+
+    <!-- Premium Category Grid -->
+    <div class="text-center mb-5">
+        <h2 class="display-5 fw-light mb-3">{% trans "Select a Category" %}</h2>
+        <p class="text-muted lead">{% trans "Choose the type of uniform you want to customize" %}</p>
+    </div>
+
+    <div class="category-grid">
+        {% for category in categories %}
+        <a href="{% url 'configurator:step1' %}?category={{ category.id }}" class="category-card">
+            <div class="category-icon">
+                <img src="{{ category.icon.url }}" alt="{{ category.name }}" class="img-fluid">
+            </div>
+            <div class="category-content">
+                <h3>{{ category.name }}</h3>
+                <p>{{ category.description|truncatewords:15 }}</p>
+                <span class="btn-premium">
+                    <i class="fas fa-arrow-right me-1"></i>
+                    {% trans "Select Category" %}
+                </span>
+            </div>
+        </a>
+        {% empty %}
+        <div class="col-12 text-center py-5">
+            <div class="empty-state-icon mb-4">
+                <i class="fas fa-folder-open fa-3x text-muted"></i>
+            </div>
+            <h3 class="text-muted mb-3">{% trans "No Categories Available" %}</h3>
+            <p class="text-muted">{% trans "Please check back later for available uniform categories." %}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,1048 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Home"
+msgstr "الرئيسية"
+
+msgid "About Us"
+msgstr "من نحن"
+
+msgid "Products"
+msgstr "المنتجات"
+
+msgid "Design Your Uniform"
+msgstr "صمم زيّك"
+
+msgid "Get a Quote"
+msgstr "عرض سعر"
+
+msgid "Blog"
+msgstr "المدونة"
+
+msgid "Contact"
+msgstr "اتصل بنا"
+
+msgid "Professional Uniforms that Elevate Your Brand Image"
+msgstr "الزي المهني الذي يرفع من صورة علامتك التجارية"
+
+msgid "Our Sectors"
+msgstr "قطاعاتنا"
+
+msgid "Explore"
+msgstr "استكشاف"
+
+msgid "School Uniforms"
+msgstr "أزياء مدرسية"
+msgid "Medical Uniforms"
+msgstr "أزياء طبية "
+msgid "Restaurants"
+msgstr "أزياء مطاعم"
+msgid "Factories"
+msgstr "أزياء مصانع"
+msgid "We are committed to excellence in every stitch"
+msgstr "نحن ملتزمون بالتميز في عملنا"
+
+msgid "in a short time, in different sizes and multiple shapes for all sectors."
+msgstr "في وقت وجيز وبمقاﺳﺎت ﻣﺨﺘﻠﻔﺔ وأﺷﻜﺎل ﻣﺘﻌﺪده ﻟﺠﻤﻴﻊ اﻟﻘﻄﺎﻋﺎت"
+
+msgid "Why Choose Rwshan Gold?"
+msgstr "لماذا تختار الروشن الذهبي؟"
+
+msgid "Quality"
+msgstr "الجودة"
+
+msgid "Request a Quote"
+msgstr "اطلب عرض سعر"
+
+msgid "Premium materials and craftsmanship"
+msgstr "مواد عالية الجودة وحرفية ممتازة"
+
+msgid "Innovation"
+msgstr "الابتكار"
+
+msgid "Cutting-edge design and technology"
+msgstr "تصميم وتقنية متطورة"
+
+msgid "Speed"
+msgstr "السرعة"
+
+msgid "Fast delivery and turnaround times"
+msgstr "تسليم سريع وأوقات إنجاز سريعة"
+
+msgid "What Our Clients Say"
+msgstr "ماذا يقول عملاؤنا"
+
+msgid "View All Testimonials"
+msgstr "عرض جميع الشهادات"
+
+msgid "Ready to Elevate Your Brand?"
+msgstr "هل أنت مستعد لرفع مستوى علامتك التجارية؟"
+
+msgid "Get a free quote for your custom uniforms today"
+msgstr "احصل على عرض سعر مجاني لزيّك المخصص اليوم"
+
+msgid "About Rwshan Gold Company"
+msgstr "عن شركة الروشن الذهبي"
+
+msgid "Price Calculator"
+msgstr "حاسبة السعر"
+
+msgid "Our Products"
+msgstr "منتجاتنا"
+
+msgid "Quick Links"
+msgstr "الروابط السريعة"
+
+msgid "Select Product"
+msgstr "المنتج"
+msgid "Select Fabric"
+msgstr "القماش"
+msgid "Select Color"
+msgstr "اللون"
+
+msgid "Contact Us"
+msgstr "اتصل بنا"
+
+msgid "Premium quality uniforms tailored to your business needs"
+msgstr "أزياء رسمية عالية الجودة مصممة خصيصًا لتلبية احتياجات عملك"
+
+msgid "We manufacture professional uniforms in large quantities"
+msgstr "ﻧﺼﻨﻊ اﻟﻤﻼﺑﺲ اﻟﻤﻬﻨﻴﺔ اﻟﻤﻮﺣﺪة ﺑﻜﻤﻴﺎت ﻋﺎﻟية"
+
+
+msgid "SAR"
+msgstr "ر.س"
+
+msgid "Rwshan Gold Company is a leading manufacturer of professional uniforms in Saudi Arabia, committed to quality, innovation, and customer satisfaction."
+msgstr "شركة روشان الذهبية هي الشركة الرائدة في تصنيع الزي الرسمي المهني في المملكة العربية السعودية، ملتزمة بالجودة والابتكار ورضا العملاء."
+
+msgid "Leading Manufacturer of Professional Uniforms in Saudi Arabia"
+msgstr "رائع مصنعي الزي المهني في المملكة العربية السعودية"
+
+msgid "Our Story"
+msgstr "قصتنا"
+msgid "Request Date"
+msgstr "تاريخ الطلب"
+msgid "Review the details of your custom gold product request"
+msgstr "قم بمراجعة تفاصيل طلبك"
+msgid "Pricing & Status"
+msgstr "التسعير & الحالة"
+msgid "Product Specifications"
+msgstr "مواصفات المنتج"
+msgid "Track and manage all your gold product quote requests"
+msgstr "تتبع جميع عروض الأسعار الخاصة بك"
+msgid "Status"
+msgstr "حالة الطلب"
+
+msgid ""
+"Founded in Riyadh, Saudi Arabia, Rwshan Gold Company has established itself "
+"as a premier manufacturer and supplier of professional uniforms across "
+"multiple sectors. With years of experience in the industry, we have built a "
+"reputation for excellence, innovation, and reliability."
+msgstr ""
+"تأسست شركة الروشن الذهبي في مكة، المملكة العربية السعودية، وأصبحت من "
+"المصنعين والموردين الرائدين للزي المهني عبر قطاعات متعددة. بسنوات من الخبرة "
+"في الصناعة، بنينا سمعة للتميز والابتكار والموثوقية."
+
+msgid ""
+"Our commitment to quality craftsmanship and attention to detail has made us "
+"the preferred choice for leading businesses and institutions throughout the "
+"Kingdom."
+msgstr ""
+"التزامنا بالجودة الحرفية والاهتمام بالتفاصيل جعلنا الخيار المفضل للشركات "
+"والمؤسسات الرائدة في جميع أنحاء المملكة."
+
+msgid "Our Vision"
+msgstr "رؤيتنا"
+
+msgid ""
+"To be the leading provider of professional uniforms in Saudi Arabia, "
+"recognized for our quality, innovation, and commitment to customer "
+"satisfaction."
+msgstr ""
+"أن نكون المزود الرائد للزي المهني في المملكة العربية السعودية، معترف بنا "
+"لجودتنا وابتكارنا والتزامنا برضا العملاء."
+
+msgid "Our Mission"
+msgstr "مهمتنا"
+
+msgid ""
+"To deliver high-quality, durable, and stylish uniforms that enhance our "
+"clients' brand image while providing exceptional value and service."
+msgstr ""
+"تقديم زي عالي الجودة ومتين وأنيق يعزز صورة علامة عملاؤناالتجارية مع توفير "
+"قيمة وخدمة استثنائية."
+
+msgid "Our Core Values"
+msgstr "قيمنا الأساسية"
+
+msgid "Precision in Design"
+msgstr "الدقة في التصميم"
+
+msgid "Meticulous attention to detail in every uniform we create."
+msgstr "اهتمام دقيق بالتفاصيل في كل زي نقوم بإنشائه."
+
+msgid "Creativity & Flexibility"
+msgstr "الإبداع والمرونة"
+
+msgid "Innovative designs tailored to meet unique client needs."
+msgstr "تصاميم مبتكرة مصممة لتلبية احتياجات العملاء الفريدة."
+
+msgid "High-Quality Fabrics"
+msgstr "أقمشة عالية الجودة"
+
+msgid "Only the finest materials for comfort and durability."
+msgstr "أفضل المواد فقط للراحة والمتانة."
+
+msgid "Commitment to Deadlines"
+msgstr "الالتزام بالمواعيد النهائية"
+
+msgid "Reliable delivery schedules you can count on."
+msgstr "جداول تسليم موثوقة يمكنك الاعتماد عليها."
+
+msgid "Our Process"
+msgstr "عمليتنا"
+
+msgid "Design"
+msgstr "التصميم"
+
+msgid "Collaborative design process to create the perfect uniform"
+msgstr "عملية تصميم تعاونية لإنشاء الزي المثالي"
+
+msgid "Fabric Cutting"
+msgstr "قص القماش"
+
+msgid "Precision cutting for consistent quality"
+msgstr "قص دقيق لجودة متسقة"
+
+msgid "Production"
+msgstr "الإنتاج"
+
+msgid "Expert craftsmanship in every stitch"
+msgstr "حرفية خبيرة في كل غرزة"
+
+msgid "Delivery"
+msgstr "التسليم"
+
+msgid "Timely delivery to your location"
+msgstr "تسليم في الوقت المحدد إلى موقعك"
+
+msgid "Our Facility"
+msgstr "منشأتنا"
+
+msgid "Aligned with Vision 2030"
+msgstr "متوافق مع رؤية 2030"
+
+msgid ""
+"Rwshan Gold Company is proud to contribute to Saudi Arabia's Vision 2030 by "
+"supporting local manufacturing, creating job opportunities, and delivering "
+"world-class products that enhance the Kingdom's global image."
+msgstr ""
+"تفتخر شركة الروشن الذهبي بالمساهمة في رؤية المملكة العربية السعودية 2030 من "
+"خلال دعم التصنيع المحلي وخلق فرص العمل وتقديم منتجات عالمية المستوى تعزز "
+"الصورة العالمية للمملكة."
+
+msgid "Products - Rwshan Gold Company"
+msgstr "المنتجات - شركة الروشن الذهبي"
+
+msgid "Premium Professional Uniforms for Every Industry"
+msgstr "زي مهني ممتاز لكل صناعة"
+
+msgid "No product categories available yet."
+msgstr "لا توجد فئات منتجات متاحة بعد."
+
+msgid "View Products"
+msgstr "عرض المنتجات"
+
+msgid "Back to Categories"
+msgstr "العودة إلى الفئات"
+
+msgid "Products in this Category"
+msgstr "المنتجات في هذه الفئة"
+
+msgid "No products available in this category yet."
+msgstr "لا توجد منتجات متاحة في هذه الفئة بعد."
+
+msgid "View Details"
+msgstr "عرض التفاصيل"
+
+msgid "Customize"
+msgstr "تخصيص"
+
+msgid "Starting price"
+msgstr "السعر الابتدائي"
+
+msgid "Customization Options"
+msgstr "خيارات التخصيص"
+
+msgid "Multiple fabric options"
+msgstr "خيارات أقمشة متعددة"
+
+msgid "Custom colors"
+msgstr "ألوان مخصصة"
+
+msgid "Logo embroidery"
+msgstr "خياطة الشعار"
+
+msgid "Size variations"
+msgstr "مقاسات متغيرة"
+
+msgid "Details"
+msgstr "التفاصيل"
+
+msgid "Specifications"
+msgstr "المواصفات"
+msgid "Your quotes are saved in this browser session. For permanent access, please consider creating an account."
+msgstr "عروضك محفوظة في جلسة المتصفح هذه."
+msgid "This quote is saved in your current browser session only."
+msgstr "تم حفظ عرضك الحالي في الجلسة فقط"
+
+msgid "Care Instructions"
+msgstr "تعليمات العناية"
+
+msgid "Product Details"
+msgstr "تفاصيل المنتج"
+
+msgid ""
+"Detailed information about the product would go here. This could include "
+"features, benefits, and other important details that customers should know."
+msgstr ""
+"المعلومات التفصيلية عن المنتج ستكون هنا. يمكن أن تشمل الميزات والفوائد "
+"وتفاصيل مهمة أخرى يجب أن يعرفها العملاء."
+
+msgid "Material"
+msgstr "المادة"
+
+msgid "Premium cotton blend"
+msgstr "مزيج قطن ممتاز"
+
+msgid "Weight"
+msgstr "الوزن"
+
+msgid "180 GSM"
+msgstr "180 جرام لكل متر مربع"
+
+msgid "Available Sizes"
+msgstr "المقاسات المتاحة"
+
+msgid "XS, S, M, L, XL, XXL, XXXL"
+msgstr "XS, S, M, L, XL, XXL, XXXL"
+
+msgid "Customization"
+msgstr "التخصيص"
+
+msgid "Embroidery, printing, color matching"
+msgstr "التطريز، الطباعة، مطابقة الألوان"
+
+msgid "Machine wash cold with like colors"
+msgstr "غسل في الغسالة الباردة مع الألوان المتشابهة"
+
+msgid "Do not bleach"
+msgstr "لا تستخدم مبيض"
+
+msgid "Tumble dry low"
+msgstr "تجفيف بالدوران على حرارة منخفضة"
+
+msgid "Iron on medium heat if needed"
+msgstr "كوي على حرارة متوسطة إذا لزم الأمر"
+
+msgid "Do not dry clean"
+msgstr "لا تنظف جافاً"
+
+msgid "Related Products"
+msgstr "منتجات ذات صلة"
+
+msgid "Related products will be displayed here."
+msgstr "سيتم عرض المنتجات ذات الصلة هنا."
+
+msgid "Design Your Uniform - Rwshan Gold Company"
+msgstr "صمم زيّك - شركة الروشن الذهبي"
+
+msgid "Create a custom uniform that represents your brand"
+msgstr "أنشئ زيًا مخصصًا يمثل علامتك التجارية"
+
+msgid "Select a Category"
+msgstr "اختر فئة"
+
+msgid "Select"
+msgstr "اختر"
+
+msgid "Customize Your Uniform - Rwshan Gold Company"
+msgstr "خصص زيّك - شركة الروشن الذهبي"
+msgid "Customize Your Uniform"
+msgstr "خصص زيّك"
+
+msgid "Select Category"
+msgstr "اختر الفئة"
+
+msgid "Customize Design"
+msgstr "خصص التصميم"
+
+msgid "Preview & Save"
+msgstr "انشاء عرض سعر"
+
+msgid "Upload Logo (Optional)"
+msgstr "رفع الشعار (اختياري)"
+
+msgid "Upload your company logo to be placed on the uniform"
+msgstr "ارفع شعار شركتك ليتم وضعه على الزي"
+
+msgid "Additional Notes (Optional)"
+msgstr "ملاحظات إضافية (اختيارية)"
+
+msgid "Continue to Preview"
+msgstr "متابعة إلى المعاينة"
+
+msgid "Back"
+msgstr "العودة"
+
+msgid "Preview Your Design - Rwshan Gold Company"
+msgstr "معاينة تصميمك - شركة الروشن الذهبي"
+msgid "Preview Your Design"
+msgstr "معاينة تصميمك"
+
+msgid "Uniform Preview"
+msgstr "معاينة الزي"
+
+msgid "Design Details"
+msgstr "تفاصيل التصميم"
+
+msgid "Product"
+msgstr "المنتج"
+
+msgid "Fabric"
+msgstr "القماش"
+
+msgid "Color"
+msgstr "اللون"
+
+msgid "Logo"
+msgstr "الشعار"
+
+msgid "Uploaded"
+msgstr "مرفوع"
+
+msgid "None"
+msgstr "لا يوجد"
+
+msgid "Notes"
+msgstr "ملاحظات"
+msgid "Name"
+msgstr "الاسم"
+msgid "Subject"
+msgstr "الموضوع"
+msgid "Message"
+msgstr "الرسالة"
+msgid "View My Quotes"
+msgstr "عروض الأسعار"
+msgid "Go to Homepage"
+msgstr "ارجع الى الرئيسية"
+msgid "Success!"
+msgstr "نجاح"
+#: templates/your_template.html:10
+msgid "Design & Consultation"
+msgstr "التصميم والاستشارات"
+
+#: templates/your_template.html:11
+msgid "Collaborative design process to create the perfect uniform that reflects your brand identity"
+msgstr "عملية تصميم تعاونية لإنشاء الزي المثالي الذي يعكس هوية علامتك التجارية"
+
+#: templates/your_template.html:14
+msgid "Fabric Selection"
+msgstr "اختيار الأقمشة"
+
+#: templates/your_template.html:15
+msgid "Premium fabric selection and precision cutting for consistent quality and comfort"
+msgstr "اختيار أقمشة فاخرة وقصّ دقيق لضمان جودة وثبات وراحة مستمرة"
+
+#: templates/your_template.html:18
+msgid "Expert craftsmanship and quality control in every stitch by our skilled artisans"
+msgstr "حرفية عالية ومراقبة جودة دقيقة في كل غرزة من قِبل حرفيينا المهرة"
+
+#: templates/your_template.html:21
+msgid "Delivery & Support"
+msgstr "التوصيل والدعم"
+
+#: templates/your_template.html:22
+msgid "Timely delivery to your location with ongoing support and maintenance services"
+msgstr "توصيل في الوقت المحدد إلى موقعك مع دعم وخدمات صيانة مستمرة"
+
+msgid "Our State-of-the-Art Facility"
+msgstr "منشأتنا الحديثة والمتطورة"
+
+msgid "Creative Design Studio"
+msgstr "استوديو التصميم الإبداعي"
+
+msgid "Where innovation meets tradition"
+msgstr "حيث يلتقي الابتكار بالتقاليد"
+
+msgid "Quality Control Center"
+msgstr "مركز مراقبة الجودة"
+
+msgid "Rigorous quality checks at every stage"
+msgstr "فحوصات جودة دقيقة في كل مرحلة"
+
+msgid "Advanced Production Line"
+msgstr "خط إنتاج متطور"
+
+msgid "Modern equipment for precision manufacturing"
+msgstr "معدات حديثة لتصنيع عالي الدقة"
+
+msgid "Aligned with Saudi Vision 2030"
+msgstr "تماشياً مع رؤية السعودية 2030"
+
+msgid ""
+"Rwshan Gold Company is proud to contribute to Saudi Arabia's Vision 2030 by "
+"supporting local manufacturing, creating job opportunities for Saudi talent, "
+"and delivering world-class products that enhance the Kingdom's global image "
+"and economic diversification."
+msgstr ""
+"تفخر شركة الروشن الذهبي بمساهمتها في تحقيق رؤية المملكة العربية السعودية 2030 "
+"من خلال دعم التصنيع المحلي، وتوفير فرص عمل للمواهب السعودية، وتقديم منتجات "
+"عالمية المستوى تعزز الصورة العالمية للمملكة وتنوعها الاقتصادي."
+
+msgid "Saudi Workforce"
+msgstr "القوى العاملة السعودية"
+
+msgid "Local Manufacturing"
+msgstr "التصنيع المحلي"
+
+msgid "Client Satisfaction"
+msgstr "رضا العملاء"
+
+msgid "Clients Served"
+msgstr "العملاء الذين تم خدمتهم"
+
+
+msgid "Only the finest materials selected for comfort, durability, and professional appearance."
+msgstr "نختار أجود الخامات لضمان الراحة والمتانة والمظهر الاحترافي."
+msgid "Innovative designs tailored to meet unique client needs and brand identities."
+msgstr "تصاميم مبتكرة مصممة خصيصًا لتلبية احتياجات عملاؤناالفريدة وهويات علاماتهم التجارية."
+msgid "Meticulous attention to detail in every uniform we create, ensuring perfect fit and finish."
+msgstr "نهتم بأدق التفاصيل في كل زيّ نصممه، لضمان ملاءمة مثالية وتشطيب مثالي."
+msgid "Reliable delivery schedules you can count on, every single time."
+msgstr "مواعيد تسليم موثوقة يمكنك الاعتماد عليها في كل مرة."
+msgid "Our Vision & Mission"
+msgstr "رؤيتنا & رسالتنا"
+msgid "Expert Team"
+msgstr "فريق من الخبراء"
+msgid "Skilled professionals with decades of experience"
+msgstr "خبراء ماهرون بخبرة تمتد لنسوات"
+msgid "Modern Facility"
+msgstr "منشأة حديثة"
+msgid "State-of-the-art manufacturing equipment"
+msgstr "معدات تصنيع متطورة"
+msgid "Certified quality standards in every product"
+msgstr "معايير الجودة المعتمدة في كل منتج"
+msgid "Quality Excellence"
+msgstr "التميز في الجودة"
+msgid "With years of experience in the industry, we have built a reputation for excellence, innovation, and reliability. Our commitment to quality craftsmanship and attention to detail has made us the preferred choice for leading businesses and institutions throughout the Kingdom."
+msgstr "بجودتنا، اكتسبنا سمعة طيبة بفضل تميزنا وابتكارنا وموثوقيتنا. إن التزامنا بالجودة الحرفية والاهتمام بالتفاصيل جعلنا الخيار الأمثل للشركات والمؤسسات الرائدة في جميع أنحاء المملكة."
+msgid "Founded in Riyadh, Saudi Arabia, Rwshan Gold Company has established itself as a premier manufacturer and supplier of professional uniforms across multiple sectors."
+msgstr "تأسست شركة الروشان الذهبي في مكة، المملكة العربية السعودية، ورسخت مكانتها كشركة رائدة في تصنيع وتوريد الزي الرسمي المهني في مختلف القطاعات."
+msgid "Explore our premium collection of professional uniforms"
+msgstr "استكشف مجموعتنا المتميزة من الأزياء الاحترافية"
+msgid "Back to Category"
+msgstr "ارجع الى الصنف"
+msgid "Get a Free Quote"
+msgstr "احصل على عرض سعر مجاني"
+msgid "No Testimonials Yet"
+msgstr "ليس هنالك شهادات بعد"
+msgid "Check back later for client testimonials and success stories!"
+msgstr "تحقق مرة أخرى لاحقًا للحصول على شهادات العملاء وقصص النجاح"
+msgid "Read all client feedback and success stories"
+msgstr "اقرأ جميع تعليقات العملاء وقصص النجاح"
+msgid "All Testimonials"
+msgstr "جميع الشهادات"
+msgid "Discover what our valued clients say about working with Rwshan Gold Company. Their success stories drive our passion for excellence."
+msgstr "اكتشف آراء عملاؤناالكرام حول العمل مع شركة روشان الذهبي. قصص نجاحهم هي دافعنا نحو التميز."
+msgid "View All Clients"
+msgstr "عرض جميع العملاء"
+msgid "Trusted by leading organizations and businesses across Saudi Arabia"
+msgstr "موثوق بنا من قبل المؤسسات والشركات الرائدة في جميع أنحاء المملكة"
+msgid "Our Valued Clients"
+msgstr "عملاؤناالكرام"
+msgid "Testimonials"
+msgstr "شهادات العملاء"
+msgid "My Quote Requests"
+msgstr "طلباتي"
+msgid "Quote Request Details"
+msgstr "تفاصيل طلب السعر"
+msgid "Back to My Quotes"
+msgstr "الرجوع الى عروض الأسعار"
+msgid "Your quote request has been submitted successfully."
+msgstr "لقد تم تقديم عرض السعر الخاص بك بنجاح"
+msgid "Contact Person"
+msgstr "الجهة"
+
+msgid "Company Name"
+msgstr "الشركة"
+msgid "Invalid username or password. Please try again."
+msgstr "خطأ في اسم المستخدم أو كلمة السر, حاول مرة أخرى"
+msgid "Sign in to your account"
+msgstr "تسجيل الدخول"
+msgid "Username"
+msgstr "اسم المستخدم"
+msgid "Log In"
+msgstr "تسجيل الدخول"
+msgid "Forgot your password?"
+msgstr "نسيت كلمة السر"
+msgid "Enter your username"
+msgstr "أدخل اسم المستخدم"
+msgid "Enter your password"
+msgstr "أدخل كلمة السر"
+
+msgid "Estimated Price"
+msgstr "السعر المقدر"
+
+msgid "Edit Design"
+msgstr "تعديل التصميم"
+
+msgid "Get Quote"
+msgstr "عرض سعر"
+
+msgid "No design found. Please start over."
+msgstr "لم يتم العثور على تصميم. يرجى البدء من جديد."
+
+msgid "Start Over"
+msgstr "ابدأ من جديد"
+
+msgid "Price Calculator - Rwshan Gold Company"
+msgstr "حاسبة الأسعار - شركة الروشن الذهبي"
+
+msgid "Get an instant estimate for your uniform order"
+msgstr "احصل على تقدير فوري لطلب الزي الخاص بك"
+
+msgid "Choose a product"
+msgstr "اختر منتجًا"
+
+msgid "Choose a fabric"
+msgstr "اختر قماشًا"
+
+msgid "Choose a color"
+msgstr "اختر لونًا"
+
+msgid "Quantity"
+msgstr "الكمية"
+
+msgid "Logo Complexity"
+msgstr "تعقيد الشعار"
+
+msgid "Simple"
+msgstr "بسيط"
+
+msgid "Medium"
+msgstr "متوسط"
+
+msgid "Complex"
+msgstr "معقد"
+
+msgid "Base Price"
+msgstr "السعر الأساسي"
+
+msgid "Fabric Upgrade"
+msgstr "ترقية القماش"
+
+msgid "Logo Fee"
+msgstr "رسوم الشعار"
+
+msgid "Unit Price"
+msgstr "سعر الوحدة"
+
+msgid "Quantity Discount"
+msgstr "خصم الكمية"
+
+msgid "Request Official Quote"
+msgstr "اطلب عرض سعر رسمي"
+
+msgid "Blog - Rwshan Gold Company"
+msgstr "المدونة - شركة الروشن الذهبي"
+
+msgid "Latest Insights"
+msgstr "آخر الرؤى"
+
+msgid "Read More"
+msgstr "اقرأ المزيد"
+
+msgid "No blog posts available yet."
+msgstr "لا توجد منشورات مدونة متاحة بعد."
+
+msgid "Categories"
+msgstr "الفئات"
+
+msgid "Newsletter"
+msgstr "النشرة الإخبارية"
+
+msgid "Subscribe to our newsletter for updates and offers."
+msgstr "اشترك في نشرتنا الإخبارية للحصول على التحديثات والعروض."
+
+msgid "Your email address"
+msgstr "عنوان بريدك الإلكتروني"
+
+msgid "Subscribe"
+msgstr "اشترك"
+
+msgid "By"
+msgstr "بواسطة"
+
+msgid "No related posts found."
+msgstr "لم يتم العثور على منشورات ذات صلة."
+
+msgid "Comments section would be implemented here."
+msgstr "سيتم تنفيذ قسم التعليقات هنا."
+
+msgid "Contact Us - Rwshan Gold Company"
+msgstr "اتصل بنا - شركة الروشن الذهبي"
+
+msgid ""
+"We'd love to hear from you. Send us a message and we'll respond as soon as "
+"possible."
+msgstr "نحب أن نسمع منك. أرسل لنا رسالة وسنرد في أقرب وقت ممكن."
+
+msgid "Get in Touch"
+msgstr "تواصل معنا"
+
+msgid "Send Message"
+msgstr "إرسال رسالة"
+
+msgid "Contact Information"
+msgstr "معلومات الاتصال"
+
+msgid "Address"
+msgstr "العنوان"
+
+msgid "Riyadh, Saudi Arabia"
+msgstr "مكة، المملكة العربية السعودية"
+
+msgid "Phone"
+msgstr "الهاتف"
+
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+msgid "Business Hours"
+msgstr "ساعات العمل"
+
+msgid "Monday - Friday: 9am - 5pm"
+msgstr "الاثنين - الجمعة: 9 صباحًا - 5 مساءً"
+
+msgid "Saturday: 10am - 2pm"
+msgstr "السبت: 10 صباحًا - 2 مساءً"
+
+msgid "Sunday: Closed"
+msgstr "الأحد: مغلق"
+
+msgid "Follow Us"
+msgstr "تابعنا"
+
+msgid "Frequently Asked Questions"
+msgstr "الأسئلة الشائعة"
+
+msgid "What is your return policy?"
+msgstr "ما هي سياسة الإرجاع الخاصة بك؟"
+
+msgid "Our return policy is 30 days."
+msgstr "سياسة الإرجاع الخاصة بنا هي 30 يومًا."
+
+msgid "Your message has been sent successfully! We will contact you soon."
+msgstr "تم إرسال رسالتك بنجاح! سنتواصل معك قريبًا."
+
+msgid "Your quote request has been submitted successfully!"
+msgstr "تم تقديم طلب عرض السعر بنجاح!"
+
+msgid "Home - Rwshan Gold Company"
+msgstr "الرئيسية - شركة الروشن الذهبي"
+
+msgid "About Us - Rwshan Gold Company"
+msgstr "من نحن - شركة الروشن الذهبي"
+
+msgid "Rwshan Gold Company - Premium Professional Uniforms"
+msgstr "شركة الروشن الذهبي - زي مهني ممتاز"
+
+msgid "Rwshan Gold Company. All rights reserved."
+msgstr "شركة الروشن الذهبي. جميع الحقوق محفوظة."
+
+msgid "Message Sent Successfully!"
+msgstr "تم إرسال الرسالة بنجاح!"
+
+msgid "Thank you for contacting Rwshan Gold Company. We have received your message and will get back to you soon."
+msgstr "شكرًا لتواصلك مع شركة روشان جولد. لقد استلمنا رسالتك وسنقوم بالرد عليك قريبًا."
+
+msgid "What Happens Next?"
+msgstr "ما الذي سيحدث بعد ذلك؟"
+
+msgid "Here's what you can expect in the coming hours"
+msgstr "إليك ما يمكنك توقعه خلال الساعات القادمة"
+
+msgid "Immediate Confirmation"
+msgstr "تأكيد فوري"
+
+msgid "You've received a confirmation email with details of your submission."
+msgstr "لقد تلقيت رسالة تأكيد عبر البريد الإلكتروني تتضمن تفاصيل طلبك."
+
+msgid "Review Process"
+msgstr "عملية المراجعة"
+
+msgid "Our team is reviewing your message and will assign it to the appropriate department."
+msgstr "فريقنا يقوم بمراجعة رسالتك وسيحولها إلى القسم المناسب."
+
+msgid "Response Preparation"
+msgstr "تحضير الرد"
+
+msgid "We're preparing a comprehensive response to address all your questions and concerns."
+msgstr "نحن نقوم بإعداد رد شامل لمعالجة جميع أسئلتك واستفساراتك."
+
+msgid "Final Response"
+msgstr "الرد النهائي"
+
+msgid "You'll receive a detailed response from our team within 24 hours."
+msgstr "ستتلقى ردًا مفصلًا من فريقنا خلال 24 ساعة."
+
+msgid "Return Home"
+msgstr "العودة إلى الصفحة الرئيسية"
+
+msgid "Go back to our homepage and explore more about our services."
+msgstr "ارجع إلى صفحتنا الرئيسية وتعرّف أكثر على خدماتنا."
+
+msgid "Browse FAQs"
+msgstr "تصفح الأسئلة الشائعة"
+
+msgid "Check our frequently asked questions for instant answers."
+msgstr "اطّلع على الأسئلة الشائعة للحصول على إجابات فورية."
+
+msgid "Explore our catalog of premium uniforms and custom designs."
+msgstr "استكشف كتالوجنا من الزيّ الموحد الفاخر والتصاميم المخصصة."
+
+msgid "Need Immediate Assistance?"
+msgstr "هل تحتاج إلى مساعدة فورية؟"
+
+msgid "For urgent matters, don't hesitate to contact us directly"
+msgstr "في الحالات الطارئة، لا تتردد في التواصل معنا مباشرة."
+
+msgid "View FAQs"
+msgstr "عرض الأسئلة الشائعة"
+
+msgid "Homepage"
+msgstr "الصفحة الرئيسية"
+
+msgid "Email Us"
+msgstr "راسلنا عبر البريد الإلكتروني"
+
+msgid "Find quick answers to common questions about our products and services"
+msgstr "ابحث عن إجابات سريعة للأسئلة الشائعة حول منتجاتنا وخدماتنا"
+
+msgid "No FAQs Available"
+msgstr "لا توجد أسئلة شائعة متاحة"
+
+msgid "Check back later for frequently asked questions."
+msgstr "تحقق لاحقًا لعرض الأسئلة الشائعة."
+
+msgid "Still have questions?"
+msgstr "هل لا تزال لديك أسئلة؟"
+
+msgid "Our team is here to help you get the answers you need"
+msgstr "فريقنا هنا لمساعدتك في الحصول على الإجابات التي تحتاجها"
+
+msgid "Search FAQs..."
+msgstr "ابحث في الأسئلة الشائعة..."
+
+msgid "Click the color box to choose your preferred color"
+msgstr "انقر على مربع اللون لاختيار اللون المفضل لديك"
+
+msgid "No file chosen"
+msgstr "لم يتم اختيار اسم الملف بعد"
+
+msgid "Choose File"
+msgstr "اختر الملف"
+
+msgid "Popular Colors"
+msgstr "الألوان الشائعة"
+
+msgid "Choose Color"
+msgstr "اختر اللون"
+
+
+msgid "We're here to assist you with all your gold product needs. Reach out to our expert team for personalized service and consultation."
+msgstr "نحن هنا لمساعدتك في جميع احتياجاتك من منتجات الروشان الذهبي. تواصل مع فريقنا للحصول على خدمة واستشارة مخصصة."
+
+msgid "Send Us a Message"
+msgstr "أرسل لنا رسالة"
+
+msgid "Full Name"
+msgstr "الاسم الكامل"
+
+msgid "Your Message"
+msgstr "رسالتك"
+
+msgid "Our Address"
+msgstr "عنواننا"
+
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+msgid "Email Address"
+msgstr "عنوان البريد الإلكتروني"
+
+msgid "Follow Our Journey"
+msgstr "تابع رحلتنا"
+
+msgid "Stay updated with our latest gold collections and exclusive offers"
+msgstr "ابق على اطلاع بأحدث مجموعات الروشان الذهبي لدينا والعروض الحصرية"
+
+msgid "Get immediate answers to common questions about our premium gold products and services"
+msgstr "احصل على إجابات فورية للأسئلة الشائعة حول منتجاتنا وخدماتنا"
+
+msgid "Search for answers..."
+msgstr "ابحث عن الإجابات..."
+
+msgid "We're currently preparing our frequently asked questions. Please check back soon or contact us directly."
+msgstr "نحن نعمل حاليًا على إعداد الأسئلة الشائعة. يرجى العودة لاحقًا أو التواصل معنا مباشرة."
+
+msgid "Our gold experts are ready to provide personalized assistance for all your inquiries"
+msgstr "فريقنا جاهزون لتقديم المساعدة المخصصة لجميع استفساراتك"
+
+msgid "Prefer to call?"
+msgstr "هل تفضل الاتصال؟"
+
+msgid "Contact Support"
+msgstr "اتصل بالدعم"
+
+msgid "Get In Touch"
+msgstr "تواصل معنا"
+
+msgid "Get an instant, accurate estimate for your premium uniform order with our advanced calculator"
+msgstr "احصل على تقدير فوري ودقيق لطلبك من الزي الموحد الفاخر باستخدام حاسبتنا المتقدمة"
+
+msgid "Custom Quote Calculator"
+msgstr "حاسبة عرض السعر المخصص"
+
+msgid "Product Selection"
+msgstr "اختيار المنتج"
+
+msgid "Choose from our premium uniform collection"
+msgstr "اختر من مجموعتنا المميزة للأزياء الموحدة"
+
+msgid "Premium fabric options available"
+msgstr "خيارات الأقمشة الفاخرة متاحة"
+
+msgid "Custom color matching available"
+msgstr "تتوفر إمكانية مطابقة الألوان المخصصة"
+
+msgid "Bulk discounts available for larger orders"
+msgstr "تتوفر خصومات على الطلبات الكبيرة"
+
+msgid "Simple - Basic logo placement"
+msgstr "بسيط - وضع شعار أساسي"
+
+msgid "Choose the complexity level for logo application"
+msgstr "اختر مستوى التعقيد لتطبيق الشعار"
+
+msgid "Select product options to see detailed pricing"
+msgstr "اختر خيارات المنتج لعرض التسعير التفصيلي"
+
+msgid "Additional Notes & Requirements"
+msgstr "ملاحظات ومتطلبات إضافية"
+
+msgid "Any special requirements or notes for your order..."
+msgstr "أي متطلبات أو ملاحظات خاصة لطلبك..."
+
+msgid "Instant Calculation"
+msgstr "حساب فوري"
+
+msgid "Real-time price updates as you customize your order"
+msgstr "تحديثات أسعار فورية أثناء تخصيص طلبك"
+
+msgid "Bulk Discounts"
+msgstr "خصومات الجملة"
+
+msgid "Automatic discounts for larger quantity orders"
+msgstr "خصومات تلقائية على الطلبات ذات الكميات الكبيرة"
+
+msgid "Quality Guarantee"
+msgstr "ضمان الجودة"
+
+msgid "Premium materials and craftsmanship guaranteed"
+msgstr "نضمن استخدام مواد فاخرة وحرفية عالية الجودة"
+
+
+msgid "Quick turnaround times for all custom orders"
+msgstr "أوقات تنفيذ سريعة لجميع الطلبات المخصصة"
+
+msgid "Fast Delivery"
+msgstr "توصيل سريع"
+msgid "Complex - Intricate design work"
+msgstr "معقد - تصميم مُعقّد"
+msgid "Medium - Detailed embroidery"
+msgstr "متوسط ​​- تطريز مُفصّل"
+
+msgid "Logo Application"
+msgstr "تطبيق الشعار"
+
+msgid "Subtotal"
+msgstr "المجموع"
+
+msgid "Total Price"
+msgstr "الاجمالي"
+
+msgid "units"
+msgstr "وحدات"
+msgid "Next"
+msgstr "التالي"
+msgid "Previous"
+msgstr "السابق"
+
+msgid "Why Choose Our Uniforms?"
+msgstr "لماذا تختار أزيائنا الموحدة؟"
+
+msgid "Experience the difference with our premium quality and exceptional service"
+msgstr "اختبر الفرق مع جودة منتجاتنا الفاخرة وخدمتنا الاستثنائية"
+
+msgid "Premium Quality"
+msgstr "جودة فاخرة"
+
+msgid "Crafted with the finest materials and attention to detail for lasting durability"
+msgstr "مصنوعة من أجود المواد مع اهتمام بأدق التفاصيل لضمان المتانة الطويلة"
+
+msgid "Custom Fit"
+msgstr "تفصيل مخصص"
+
+msgid "Tailored to perfection with precise measurements for optimal comfort"
+msgstr "مصممة بدقة تامة وفق القياسات لضمان الراحة المثالية"
+
+msgid "Custom Design"
+msgstr "تصميم مخصص"
+
+msgid "Personalized designs that reflect your brand identity and professionalism"
+msgstr "تصاميم مخصصة تعكس هوية علامتك التجارية واحترافيتك"
+
+msgid "Quick turnaround times without compromising on quality and precision"
+msgstr "أوقات تنفيذ سريعة دون المساومة على الجودة والدقة"
+
+
+msgid "Happy Clients"
+msgstr "عملاء سعداء"
+
+msgid "Industries Served"
+msgstr "القطاعات التي نخدمها"
+
+msgid "Uniforms Delivered"
+msgstr "زي موحد تم تسليمه"
+
+msgid "Satisfaction Rate"
+msgstr "معدل الرضا"
+msgid "Choose the type of uniform you want to customize"
+msgstr "اختر نوع الزي الذي تريد تصميمه"
+
+msgid "Enter any special requirements or notes..."
+msgstr "أدخل أي متطلبات أو ملاحظات خاصة..."
+

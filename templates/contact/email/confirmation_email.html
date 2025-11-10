@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: #f8f9fa; padding: 20px; text-align: center; border-radius: 5px; }
+        .content { background: white; padding: 20px; border: 1px solid #ddd; border-radius: 5px; margin-top: 20px; }
+        .thank-you { text-align: center; color: #28a745; font-size: 18px; }
+        .info-box { background: #e7f3ff; padding: 15px; border-radius: 5px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Rwshan Gold Company</h1>
+            <p>Quality Uniforms & Professional Attire</p>
+        </div>
+        
+        <div class="content">
+            <div class="thank-you">
+                <h2>Thank You for Contacting Us, {{ name }}!</h2>
+            </div>
+            
+            <p>We have received your message regarding <strong>"{{ subject }}"</strong> and appreciate you taking the time to write to us.</p>
+            
+            <div class="info-box">
+                <h3>What happens next?</h3>
+                <ul>
+                    <li>Our team will review your message</li>
+                    <li>We'll respond to your inquiry within 24 hours</li>
+                    <li>For urgent matters, please call us at 0986 686 55 966+</li>
+                </ul>
+            </div>
+            
+            <p><strong>Business Hours:</strong><br>
+            Monday - Friday: 9am - 5pm<br>
+            Saturday: 10am - 2pm<br>
+            Sunday: Closed</p>
+            
+            <p>If you have any additional questions or need immediate assistance, feel free to contact us directly.</p>
+            
+            <p>Best regards,<br>
+            <strong>The Rwshan Gold Company Team</strong></p>
+        </div>
+        
+        <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 5px; text-align: center; font-size: 12px; color: #666;">
+            <p>This is an automated confirmation email. Please do not reply to this message.</p>
+        </div>
+    </div>
+</body>
+</html>

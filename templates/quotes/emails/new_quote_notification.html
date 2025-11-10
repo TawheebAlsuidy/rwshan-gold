@@ -1,0 +1,158 @@
+<!-- quotes/templates/quotes/emails/new_quote_notification.html -->
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض سعر جديد</title>
+    <style>
+        body {
+            font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #D4AF37 0%, #b8941f 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            padding: 30px;
+        }
+        .quote-info {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-right: 4px solid #D4AF37;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .info-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .label {
+            font-weight: bold;
+            color: #495057;
+        }
+        .value {
+            color: #212529;
+        }
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #D4AF37;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .btn {
+            display: inline-block;
+            background: #D4AF37;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>عرض سعر جديد</h1>
+            <p>تم استلام طلب عرض سعر جديد من العميل</p>
+        </div>
+        
+        <div class="content">
+            <div class="quote-info">
+                <div class="info-row">
+                    <span class="label">رقم العرض:</span>
+                    <span class="value">{{ quote.quote_id }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">الشركة:</span>
+                    <span class="value">{{ quote.company_name }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">الشخص المسؤول:</span>
+                    <span class="value">{{ quote.contact_person }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">البريد الإلكتروني:</span>
+                    <span class="value">{{ quote.email }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">الهاتف:</span>
+                    <span class="value">{{ quote.phone }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">المنتج:</span>
+                    <span class="value">{{ quote.product.name }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">الكمية:</span>
+                    <span class="value">{{ quote.quantity }}</span>
+                </div>
+                {% if quote.estimated_price %}
+                <div class="price">
+                    السعر المقدر: {{ quote.estimated_price }} ر.س
+                </div>
+                {% endif %}
+            </div>
+
+            {% if quote.notes %}
+            <div style="background: #e3f2fd; padding: 15px; border-radius: 6px; margin: 20px 0;">
+                <strong>ملاحظات العميل:</strong>
+                <p style="margin: 10px 0 0 0;">{{ quote.notes }}</p>
+            </div>
+            {% endif %}
+
+            <div class="actions">
+                <a href="{{ site_url }}{% url 'admin:quotes_quoterequest_change' quote.id %}" class="btn">
+                    عرض التفاصيل في لوحة التحكم
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 {{ company_name }}. جميع الحقوق محفوظة.</p>
+            <p>هذه الرسالة أرسلت تلقائياً من نظام عروض الأسعار</p>
+        </div>
+    </div>
+</body>
+</html>
