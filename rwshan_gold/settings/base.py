@@ -151,9 +151,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-HUGGINGFACE_API_TOKEN  = "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"
-# HUGGINGFACE_API_TOKEN = os.environ.get('HUGGINGFACE_API_TOKEN', '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')
-# HUGGINGFACE_API_TOKEN = config('HUGGINGFACE_API_TOKEN', default='')
 # DEBUG = config('DEBUG', default=False, cast=bool)
 
 
