@@ -140,157 +140,6 @@ def translate_arabic_to_english(text):
     result = translator.translate(text, src='ar', dest='en')
     return result.text
 
-def generate_uniform_preview(design):
-    """
-    Generate a front-facing AI uniform photo using Hugging Face API.
-    Now uses HEX color codes directly.
-    """
-    api_url = "https://router.huggingface.co/hf-inference/models/stabilityai/stable-diffusion-xl-base-1.0"
-    headers = {"Authorization": f"Bearer {settings.HUGGINGFACE_API_TOKEN}"}
-
-    import webcolors
-    from math import sqrt
-    
-
-    def closest_css3_color(requested_rgb):
-        """
-        يحسب أقرب اسم لون من ألوان CSS3 الرسمية لأي كود RGB.
-        لا يعتمد على ثوابت داخلية تم حذفها من الإصدارات الحديثة.
-        """
-        css3_colors = {
-            name: webcolors.hex_to_rgb(hex_value)
-            for name, hex_value in webcolors._definitions._CSS3_NAMES_TO_HEX.items()
-        }
-        # ^ نستخدم internal dict الموجود فعليًا في النسخ الجديدة (مؤكد موجود)
-
-        min_distance = float("inf")
-        closest_name = None
-        for name, rgb in css3_colors.items():
-            distance = sqrt(
-                (rgb.red - requested_rgb[0]) ** 2 +
-                (rgb.green - requested_rgb[1]) ** 2 +
-                (rgb.blue - requested_rgb[2]) ** 2
-            )
-            if distance < min_distance:
-                min_distance = distance
-                closest_name = name
-        return closest_name
-
-
-    def hex_to_name_safe(hex_color: str):
-        """
-        يحوّل الكود الهيكس إلى أقرب اسم لوني معروف.
-        """
-        try:
-            return webcolors.hex_to_name(hex_color)
-        except ValueError:
-            rgb = webcolors.hex_to_rgb(hex_color)
-            closest_name = closest_css3_color(rgb)
-            return closest_name.replace("_", " ")
-
-    
-    # 🪡 الأقمشة
-    FABRIC_TRANSLATIONS = {
-        "قطن خفيف": "cotton",
-        "بوليستر": "polyester",
-        "كتان طبيعي": "linen",
-        "صوف ناعم": "wool",
-        "نايلون": "nylon",
-        "حرير": "silk",
-        "قماش طبي": "medical fabric",
-        "مزيج قطني": "cotton blend",
-        "بوليستر مقاوم للماء": "water-resistant fabric",
-        "قماش صناعي": "synthetic fabric",
-    }
-
-    # 🧥 المنتجات
-    PRODUCT_TRANSLATIONS = {
-        "قميص رسمي": "formal shirt",
-        "بنطال رسمي": "formal trousers",
-        "جاكيت رسمي": "formal jacket",
-        "مئزر طبي": "medical coat",
-        "زي ممرضة": "nurse uniform",
-        "بلوزة طبية": "medical blouse",
-        "قميص مدرسي": "school shirt",
-        "تيشيرت رياضي": "sports t-shirt",
-        "بنطال رياضي": "sports pants",
-        "زي عمل صناعي": "industrial workwear",
-        "زي استقبال": "receipt uniform",
-    }
-
-    product_name = PRODUCT_TRANSLATIONS.get(design.product.name, design.product.name)
-    color_name = hex_to_name_safe(design.color)
-    fabric = FABRIC_TRANSLATIONS.get(design.fabric.name, design.fabric.name)
-    notes = design.notes or ""
-    print(design.color, color_name)
-    prompt = f"""
-A high-resolution studio photo of a {product_name} uniform made of {fabric} fabric, in {color_name} color.
-The uniform is short-sleeved and button-up, designed in a professional style similar to a security or work shirt. 
-It is worn in a standing position, shown from the waist up, with the torso facing directly forward (camera angle 0° front view).
-The shoulders are level and symmetrical, arms relaxed down on both sides but cropped slightly above the wrists, 
-so the focus remains on the upper uniform. 
-The shirt is neatly tucked into matching uniform trousers with a visible belt line, 
-and the overall look should match the proportions and layout of a typical product photo 
-where the subject is centered and occupies about 80% of the frame.
-
-The frame size must be fixed (1024×1024 px) — same camera distance, same scale, same position for every generation.
-Lighting is soft, even, and professional studio quality — no harsh shadows or reflections.
-Background is transparent (alpha channel), pure isolation of the uniform with no backdrop.
-
-Visible fabric details: texture of {fabric}, stitching lines, seams, and natural folds in realistic proportions.
-The only variable visual attributes are {color_name} color and {fabric} fabric, while the composition, pose, and framing remain absolutely fixed.
-This setup ensures the product can align perfectly for overlaying a logo on the left chest area using CSS.\n
-"""
-
-    if notes != "":
-        prompt += f"Additional notes: {translate_arabic_to_english(notes)}\n"
-
-    prompt += """
-        Negative prompt:
-        no people, no faces, no watermark, no text, no logos, no accessories, 
-        no background, no shadows, no reflections, no mannequins, no perspective tilt, 
-        no zoom changes, no partial crops, no patterns, no multiple views.
-        """
-
-
-
-    data = {
-        "inputs": prompt.strip(),
-        "parameters": {"width": 1024, "height": 1024}
-    }
-
-    response = requests.post(api_url, headers=headers, json=data)
-    if response.status_code != 200:
-        raise Exception(f"Hugging Face API error {response.status_code}: {response.text}")
-
-    # حفظ الصورة المُنشأة
-    image_data = ContentFile(response.content, name=f"ai_preview_{design.id}.png")
-    design.ai_preview.save(image_data.name, image_data)
-    design.save()
-
-    return design.ai_preview.url
-
-def remove_logo_background(design):
-    """
-    Remove background from uploaded logo using rembg.
-    """
-    if not design.logo:
-        return
-
-    input_path = design.logo.path
-    output_path = os.path.splitext(input_path)[0] + "_nobg.png"
-
-    with open(input_path, "rb") as i:
-        input_bytes = i.read()
-
-    # remove() returns PNG bytes with transparent background
-    result = remove(input_bytes)
-
-    # Replace logo file with the transparent one
-    design.logo.save(os.path.basename(output_path), ContentFile(result))
-    design.save()
-
-
 
 # # import base64
 # # from django.core.files.base import ContentFile
@@ -586,21 +435,28 @@ import webcolors
 from math import sqrt
 
 
-def generate_uniform_preview(design, include_logo_area=False):
+def generate_uniform_preview(design):
     """
     Generate a front-facing AI uniform photo using Hugging Face API.
+    Now uses HEX color codes directly.
     """
     api_url = "https://router.huggingface.co/hf-inference/models/stabilityai/stable-diffusion-xl-base-1.0"
     headers = {"Authorization": f"Bearer {settings.HUGGINGFACE_API_TOKEN}"}
 
+    import webcolors
+    from math import sqrt
+    
+
     def closest_css3_color(requested_rgb):
         """
         يحسب أقرب اسم لون من ألوان CSS3 الرسمية لأي كود RGB.
+        لا يعتمد على ثوابت داخلية تم حذفها من الإصدارات الحديثة.
         """
         css3_colors = {
             name: webcolors.hex_to_rgb(hex_value)
             for name, hex_value in webcolors._definitions._CSS3_NAMES_TO_HEX.items()
         }
+        # ^ نستخدم internal dict الموجود فعليًا في النسخ الجديدة (مؤكد موجود)
 
         min_distance = float("inf")
         closest_name = None
@@ -615,6 +471,7 @@ def generate_uniform_preview(design, include_logo_area=False):
                 closest_name = name
         return closest_name
 
+
     def hex_to_name_safe(hex_color: str):
         """
         يحوّل الكود الهيكس إلى أقرب اسم لوني معروف.
@@ -626,6 +483,7 @@ def generate_uniform_preview(design, include_logo_area=False):
             closest_name = closest_css3_color(rgb)
             return closest_name.replace("_", " ")
 
+    
     # 🪡 الأقمشة
     FABRIC_TRANSLATIONS = {
         "قطن خفيف": "cotton",
@@ -658,30 +516,37 @@ def generate_uniform_preview(design, include_logo_area=False):
     product_name = PRODUCT_TRANSLATIONS.get(design.product.name, design.product.name)
     color_name = hex_to_name_safe(design.color)
     fabric = FABRIC_TRANSLATIONS.get(design.fabric.name, design.fabric.name)
-    
+    notes = design.notes or ""
+    print(design.color, color_name,'coooooooooooo')
+
     prompt = f"""
-A high-resolution studio photo of a {product_name} uniform made of {fabric} fabric, in {color_name} color.
-The uniform is short-sleeved and button-up, designed in a professional style similar to a security or work shirt. 
-It is worn in a standing position, shown from the waist up, with the torso facing directly forward (camera angle 0° front view).
-The shoulders are level and symmetrical, arms relaxed down on both sides but cropped slightly above the wrists, 
-so the focus remains on the upper uniform. 
-The shirt is neatly tucked into matching uniform trousers with a visible belt line, 
-and the overall look should match the proportions and layout of a typical product photo 
-where the subject is centered and occupies about 80% of the frame.
+        Ultra-clean, high-resolution product photo of a professional {product_name} uniform, with fabric {fabric}.
+        The uniform must be entirely and accurately in the exact color: {color_name}.
+        Color accuracy is the highest priority — the fabric tone must perfectly match {color_name} with no tint shifts or mixed hues.
 
-The frame size must be fixed (1024×1024 px) — same camera distance, same scale, same position for every generation.
-Lighting is soft, even, and professional studio quality — no harsh shadows or reflections.
-Background is transparent (alpha channel), pure isolation of the uniform with no backdrop.
+        Style identity must reflect a typical {product_name} uniform (visual cues, shape, general structure),
+        but without adding extra decorations, logos, patterns, or accessories.
 
-Visible fabric details: texture of {fabric}, stitching lines, seams, and natural folds in realistic proportions.
-The only variable visual attributes are {color_name} color and {fabric} fabric, while the composition, pose, and framing remain absolutely fixed.
-{"Left chest area is clean and ready for logo placement." if include_logo_area else ""}
+        The uniform is shown clearly and centered, isolated on a transparent background (alpha channel),
+        with even studio lighting and no shadows, no gradients, and no reflections.
 
-Negative prompt:
-no people, no faces, no watermark, no text, no logos, no accessories, 
-no background, no shadows, no reflections, no mannequins, no perspective tilt, 
-no zoom changes, no partial crops, no patterns, no multiple views.
-"""
+        Fabric should appear realistic with subtle natural texture, but the overall design should remain simple and clean
+        to ensure the color is uniform and consistent across the entire garment.
+
+        Do NOT alter the color, do NOT stylize it, do NOT add artistic effects.
+        Exact solid {color_name} color only, consistent from top to bottom.
+        """
+    if notes != "":
+        prompt += f"Additional notes: {translate_arabic_to_english(notes)}\n"
+
+#     prompt += """
+#         Negative prompt:
+#         no people, no faces, no watermark, no text, no logos, no accessories, 
+#         no background, no shadows, no reflections, no mannequins, no perspective tilt, 
+#         no zoom changes, no partial crops, no patterns, no multiple views.
+#         """
+
+
 
     data = {
         "inputs": prompt.strip(),

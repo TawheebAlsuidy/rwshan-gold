@@ -23,7 +23,10 @@ class UniformDesignForm(forms.ModelForm):
         # Make the product field required and improve its display
         self.fields['product'].widget.attrs.update({'class': 'form-select'})
         self.fields['fabric'].widget.attrs.update({'class': 'form-select'})
-        self.fields['logo'].widget.attrs.update({'class': 'form-control'})
+        self.fields['logo'].widget.attrs.update({
+            'class': 'form-control',
+            'disabled': 'disabled'
+        })
         self.fields['notes'].widget.attrs.update({
             'class': 'form-control',
             'rows': 3,

@@ -68,6 +68,7 @@ class ConfiguratorStep2View(TemplateView):
             # Try to generate preview if not already generated
             
             try:
+                print("Generating preview for design ID:", design.id)
                 generate_uniform_preview(design)
             except Exception as e:
                 print("Preview generation failed:", e)

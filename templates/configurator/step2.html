@@ -70,7 +70,7 @@
                                 </table>
                                 
                                 <div class="design-actions mt-3">
-                                    <a href="{% url 'configurator:step1' %}" class="btn btn-outline-secondary">{% trans "Edit Design" %}</a>
+                                    <a href="{% url 'configurator:step1' %}?category={{ design.product.category.id }}" class="btn btn-outline-secondary">{% trans "Edit Design" %}</a>
                                     <!-- <a href="{% url 'quotes:calculator' %}?design={{ design.id }}" class="btn btn-primary">{% trans "Get Quote" %}</a> -->
                                     <a href="{% url 'quotes:calculator' %}?product={{ design.product.id }}&fabric={{ design.fabric.id }}&color={{ design.color.id }}&quantity=1&logo_complexity=simple" class="btn btn-primary">
                                         {% trans "Get Quote" %}
