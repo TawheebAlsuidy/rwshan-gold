@@ -1,0 +1,32 @@
+.design-preview {
+    position: relative;
+    display: inline-block;
+    width: 350px; /* fixed width for uniform preview */
+    height: auto;
+    overflow: hidden;
+}
+
+.uniform-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    object-fit: contain;
+}
+
+/* ✅ Fixed overlay on the left chest */
+.logo-overlay {
+    position: absolute;
+    top: 31%;       /* Adjust this for perfect chest placement */
+    left: 36%;      /* Adjust this for horizontal alignment */
+    width: 13%;     /* Fixed size logo */
+    height: auto;
+    opacity: 0.95;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    transition: transform 0.2s ease;
+}
+
+.logo-overlay:hover {
+    transform: scale(1.1);
+}
